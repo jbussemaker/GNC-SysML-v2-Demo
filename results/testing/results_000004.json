@@ -1,0 +1,53 @@
+{
+    "1899_mass": [
+        63.5,
+        "kg"
+    ],
+    "1900_failureRate": 4.004840993449539e-12,
+    "1901_logFailureRate": -11.397414722285939,
+    "1907_failureRate": 5e-05,
+    "1908_mass": [
+        9,
+        "kg"
+    ],
+    "1914_failureRate": 5e-05,
+    "1915_mass": [
+        9,
+        "kg"
+    ],
+    "1921_failureRate": 5e-05,
+    "1922_mass": [
+        9,
+        "kg"
+    ],
+    "1929_failureRate": 0.0001,
+    "1930_mass": [
+        3,
+        "kg"
+    ],
+    "1937_failureRate": 4e-05,
+    "1938_mass": [
+        5,
+        "kg"
+    ],
+    "1945_failureRate": 2e-05,
+    "1946_mass": [
+        10,
+        "kg"
+    ],
+    "1952_failureRate": 8e-05,
+    "1953_mass": [
+        3.5,
+        "kg"
+    ],
+    "1959_failureRate": 0.0002,
+    "1960_mass": [
+        5.5,
+        "kg"
+    ],
+    "1966_failureRate": 0.0001,
+    "1967_mass": [
+        9.5,
+        "kg"
+    ]
+}

@@ -1,4 +1,4 @@
-# Guidance, Navigation and Control Test Problem: SysML v2 Implementation
+# GNC Test Problem: SysML v2 Implementation
 
 This repository contains the implementation of the
 [GNC test problem](https://github.com/jbussemaker/SBArchOpt/blob/main/sb_arch_opt/problems/gnc.py)
@@ -8,7 +8,7 @@ It demonstrates the application of the "Architecture Design" library developed i
 
 This repository accompanies the paper:
 
-Bussemaker, J.H., et al., (2026) "System Architecture Optimization Using SyML v2: Language Extension and Implementation", IEEE SYSCON 2026, Halifax, Canada.
+*Bussemaker, J.H., et al., (2026) "System Architecture Optimization Using SyML v2: Language Extension and Implementation", IEEE SYSCON 2026, Halifax, Canada.*
 
 The GNC problem is a bi-objective SAO test problem,
 that features the selection of the types and amount of sensors, computers and actuators, and how to connect them.
@@ -17,12 +17,6 @@ For more details, refer to Section 3.6.2 of [Jasper Bussemaker's dissertation](h
 
 The purpose is to demonstrate how an architecture optimization problem can be implemented using ADORE and SysML v2.
 The optimization results are the same compared to the reference implementation in [SBArchOpt](https://sbarchopt.readthedocs.io/).
-
-SysML v2 implementation:
-![SysML v2 results](results/optimization_50_10/gnc_optimized_plot.png)
-
-Reference implementation:
-![SysML v2 results](results/ref_optimization_50_10/gnc_optimized_plot.png)
 
 ## Repository Contents
 
@@ -55,3 +49,13 @@ For running the evaluator Python scripts, create a Python environment (Python 3.
 Note that it requires [Syside Automator](https://docs.sensmetry.com/automator/index.html), which is proprietary software. Refer to [their instructions](https://docs.sensmetry.com/automator/install.html) for how to setup the license.
 
 For running the reference optimization, implemented in [SBArchOpt](https://sbarchopt.readthedocs.io/), run: `pip install sb-arch-opt`
+
+## Comparison of Optimization Results
+
+### SysML v2 implementation
+
+![SysML v2 results](results/optimization_50_10/gnc_optimized_plot.png)
+
+### Reference implementation
+
+![SysML v2 results](results/ref_optimization_50_10/gnc_optimized_plot.png)

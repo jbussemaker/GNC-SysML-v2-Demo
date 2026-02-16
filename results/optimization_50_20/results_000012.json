@@ -1,0 +1,28 @@
+{
+    "1574_mass": [
+        32.5,
+        "kg"
+    ],
+    "1575_failureRate": 0.00012999639994800162,
+    "1576_logFailureRate": -3.886068674649828,
+    "1582_failureRate": 5e-05,
+    "1583_mass": [
+        9,
+        "kg"
+    ],
+    "1590_failureRate": 2e-05,
+    "1591_mass": [
+        10,
+        "kg"
+    ],
+    "1598_failureRate": 2e-05,
+    "1599_mass": [
+        10,
+        "kg"
+    ],
+    "1605_failureRate": 8e-05,
+    "1606_mass": [
+        3.5,
+        "kg"
+    ]
+}

@@ -1,0 +1,33 @@
+{
+    "891_mass": [
+        45,
+        "kg"
+    ],
+    "892_failureRate": 0.000100014398080052,
+    "893_logFailureRate": -3.999937474433967,
+    "899_failureRate": 0.0001,
+    "900_mass": [
+        6,
+        "kg"
+    ],
+    "907_failureRate": 2e-05,
+    "908_mass": [
+        10,
+        "kg"
+    ],
+    "915_failureRate": 2e-05,
+    "916_mass": [
+        10,
+        "kg"
+    ],
+    "922_failureRate": 0.0001,
+    "923_mass": [
+        9.5,
+        "kg"
+    ],
+    "929_failureRate": 0.0001,
+    "930_mass": [
+        9.5,
+        "kg"
+    ]
+}

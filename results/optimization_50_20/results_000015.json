@@ -1,0 +1,33 @@
+{
+    "1848_mass": [
+        27.5,
+        "kg"
+    ],
+    "1849_failureRate": 0.00020001959496024,
+    "1850_logFailureRate": -3.698927456504766,
+    "1856_failureRate": 0.0001,
+    "1857_mass": [
+        6,
+        "kg"
+    ],
+    "1863_failureRate": 0.0001,
+    "1864_mass": [
+        6,
+        "kg"
+    ],
+    "1871_failureRate": 4e-05,
+    "1872_mass": [
+        5,
+        "kg"
+    ],
+    "1879_failureRate": 4e-05,
+    "1880_mass": [
+        5,
+        "kg"
+    ],
+    "1886_failureRate": 0.0002,
+    "1887_mass": [
+        5.5,
+        "kg"
+    ]
+}

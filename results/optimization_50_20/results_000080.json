@@ -1,0 +1,53 @@
+{
+    "22550_mass": [
+        52.5,
+        "kg"
+    ],
+    "22551_failureRate": 6.12477294834948e-12,
+    "22552_logFailureRate": -11.212910006409412,
+    "22558_failureRate": 5e-05,
+    "22559_mass": [
+        9,
+        "kg"
+    ],
+    "22565_failureRate": 5e-05,
+    "22566_mass": [
+        9,
+        "kg"
+    ],
+    "22572_failureRate": 5e-05,
+    "22573_mass": [
+        9,
+        "kg"
+    ],
+    "22580_failureRate": 0.0001,
+    "22581_mass": [
+        3,
+        "kg"
+    ],
+    "22588_failureRate": 0.0001,
+    "22589_mass": [
+        3,
+        "kg"
+    ],
+    "22596_failureRate": 4e-05,
+    "22597_mass": [
+        5,
+        "kg"
+    ],
+    "22603_failureRate": 8e-05,
+    "22604_mass": [
+        3.5,
+        "kg"
+    ],
+    "22610_failureRate": 0.0002,
+    "22611_mass": [
+        5.5,
+        "kg"
+    ],
+    "22617_failureRate": 0.0002,
+    "22618_mass": [
+        5.5,
+        "kg"
+    ]
+}

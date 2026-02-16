@@ -1,0 +1,28 @@
+{
+    "2850_mass": [
+        28.5,
+        "kg"
+    ],
+    "2851_failureRate": 0.000149996599760008,
+    "2852_logFailureRate": -3.823918585759006,
+    "2858_failureRate": 5e-05,
+    "2859_mass": [
+        9,
+        "kg"
+    ],
+    "2866_failureRate": 4e-05,
+    "2867_mass": [
+        5,
+        "kg"
+    ],
+    "2874_failureRate": 4e-05,
+    "2875_mass": [
+        5,
+        "kg"
+    ],
+    "2881_failureRate": 0.0001,
+    "2882_mass": [
+        9.5,
+        "kg"
+    ]
+}

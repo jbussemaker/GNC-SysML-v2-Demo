@@ -1,0 +1,33 @@
+{
+    "3411_mass": [
+        38.5,
+        "kg"
+    ],
+    "3412_failureRate": 0.000139996000249965,
+    "3413_logFailureRate": -3.8538843721373577,
+    "3419_failureRate": 0.0001,
+    "3420_mass": [
+        6,
+        "kg"
+    ],
+    "3426_failureRate": 5e-05,
+    "3427_mass": [
+        9,
+        "kg"
+    ],
+    "3433_failureRate": 5e-05,
+    "3434_mass": [
+        9,
+        "kg"
+    ],
+    "3441_failureRate": 4e-05,
+    "3442_mass": [
+        5,
+        "kg"
+    ],
+    "3448_failureRate": 0.0001,
+    "3449_mass": [
+        9.5,
+        "kg"
+    ]
+}

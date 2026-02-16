@@ -21,11 +21,25 @@ def plot_results(f_pop, f_opt, save_path=None):
     if save_path is not None:
         plt.savefig(save_path+'.png')
         plt.savefig(save_path+'.svg')
-    else:
+
+    plt.rcParams["font.family"] = "serif"
+    plt.rcParams["font.serif"] = ["Times New Roman"]
+    plt.figure(figsize=(3, 2))
+    plt.scatter(f_opt[:, 0], f_opt[:, 1], s=5, c='k')
+    plt.xlabel('Failure rate ($log_{10}$)'), plt.ylabel('Mass [kg]')
+    ax = plt.gca()
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    plt.tight_layout()
+
+    if save_path is not None:
+        plt.savefig(save_path+'_paper.svg')
+
+    if save_path is None:
         plt.show()
 
 
-def optimize_reference(pop_size=50, n_gen=10):
+def optimize_reference(pop_size=50, n_gen=20):
 
     opt_results_dir = results_dir / f'ref_optimization_{pop_size}_{n_gen}'
     shutil.rmtree(opt_results_dir, ignore_errors=True)

@@ -6,7 +6,7 @@
 //
 // This library has been developed as part of the ODE4HERA project: https://www.ode4hera.eu/
 //
-// Version: v1.0
+// Version: v2.0
 // License: MIT
 // Maintainer: DLR Institute of System Architectures in Aeronautics
 // Contact: jasper.bussemaker@dlr.de, francesco.torrigiani@dlr.de, luca.boggero@dlr.de
@@ -14,7 +14,7 @@
 //
 // MIT License
 //
-// Copyright (c) 2025 Deutsches Zentrum für Luft- und Raumfahrt eV (DLR), Siemens Industry Software NV, Siemens AG, Siemens Industry Software SAS, IRT Saint Exupéry, EnginSoft SpA, Airbus Defence and Space SA, Airbus Defence and Space GmbH, Leonardo SpA
+// Copyright (c) 2026 Deutsches Zentrum für Luft- und Raumfahrt eV (DLR), Siemens Industry Software NV, Siemens AG, Siemens Industry Software SAS, IRT Saint Exupéry, EnginSoft SpA, Airbus Defence and Space SA, Airbus Defence and Space GmbH, Leonardo SpA
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -45,9 +45,9 @@ library package ArchitectureDesign {
      *   - Design variables, objectives, design constraints
      * - Modeling architecture instances
      *
-     * Version v1.0.0
+     * Version v2.0.0
      *
-     * Copyright 2025 Deutsches Zentrum für Luft- und Raumfahrt eV (DLR), Siemens Industry Software NV, Siemens AG, Siemens Industry Software SAS, IRT Saint Exupéry, EnginSoft SpA, Airbus Defence and Space SA, Airbus Defence and Space GmbH, Leonardo SpA
+     * Copyright 2026 Deutsches Zentrum für Luft- und Raumfahrt eV (DLR), Siemens Industry Software NV, Siemens AG, Siemens Industry Software SAS, IRT Saint Exupéry, EnginSoft SpA, Airbus Defence and Space SA, Airbus Defence and Space GmbH, Leonardo SpA
 	 */
 
     public import DesignProblemDefs::*;

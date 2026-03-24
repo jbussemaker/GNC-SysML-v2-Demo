@@ -7,7 +7,7 @@ package 'Architecture Package 40363' {
         action sendActuatorSignal :>> gncDesignSpace::sendActuatorSignal;
         action controlOrientation :>> gncDesignSpace::controlOrientation;
         connection dataConnection :>> gncDesignSpace::dataConnection
-            connect sensors.sensorA.dataOutPort.data to computers.computerA.dataInPort.data;
+            connect sensors.sensorA.dataOutPort to computers.computerA.dataInPort;
         connection actuatorSignalConnection :>> gncDesignSpace::actuatorSignalConnection [2] = (
             actuatorSignalConnection_1, actuatorSignalConnection_2,
         );
@@ -88,11 +88,11 @@ package 'Architecture Package 40363' {
             attribute failureRate :>> gncDesignSpace::actuators::failureRate = 0.0002;
         }
         connection actuatorSignalConnection_1 :> actuatorSignalConnection
-            connect computers.computerA.actuationSignalOutPort.actuationSignal
-            to actuators_1.actuatorA.actuationSignalInPort.actuationSignal;
+            connect computers.computerA.actuationSignalOutPort
+            to actuators_1.actuatorA.actuationSignalInPort;
         connection actuatorSignalConnection_2 :> actuatorSignalConnection
-            connect computers.computerA.actuationSignalOutPort.actuationSignal
-            to actuators_2.actuatorB.actuationSignalInPort.actuationSignal;
+            connect computers.computerA.actuationSignalOutPort
+            to actuators_2.actuatorB.actuationSignalInPort;
         architecturalChoices :>> gncDesignSpace::architecturalChoices {
             actuatorsInstantiationChoice
                 :>> gncDesignSpace::architecturalChoices::actuatorsInstantiationChoice = 2;

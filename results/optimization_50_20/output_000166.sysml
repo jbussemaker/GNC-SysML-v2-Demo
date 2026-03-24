@@ -7,7 +7,7 @@ package 'Architecture Package 59224' {
         action sendActuatorSignal :>> gncDesignSpace::sendActuatorSignal;
         action controlOrientation :>> gncDesignSpace::controlOrientation;
         connection dataConnection :>> gncDesignSpace::dataConnection
-            connect sensors.sensorB.dataOutPort.data to computers.computerA.dataInPort.data;
+            connect sensors.sensorB.dataOutPort to computers.computerA.dataInPort;
         connection actuatorSignalConnection :>> gncDesignSpace::actuatorSignalConnection [3] = (
             actuatorSignalConnection_1, actuatorSignalConnection_2, actuatorSignalConnection_3,
         );
@@ -108,14 +108,14 @@ package 'Architecture Package 59224' {
             attribute failureRate :>> gncDesignSpace::actuators::failureRate = 0.0001;
         }
         connection actuatorSignalConnection_1 :> actuatorSignalConnection
-            connect computers.computerA.actuationSignalOutPort.actuationSignal
-            to actuators_2.actuatorC.actuationSignalInPort.actuationSignal;
+            connect computers.computerA.actuationSignalOutPort
+            to actuators_2.actuatorC.actuationSignalInPort;
         connection actuatorSignalConnection_2 :> actuatorSignalConnection
-            connect computers.computerA.actuationSignalOutPort.actuationSignal
-            to actuators_3.actuatorC.actuationSignalInPort.actuationSignal;
+            connect computers.computerA.actuationSignalOutPort
+            to actuators_3.actuatorC.actuationSignalInPort;
         connection actuatorSignalConnection_3 :> actuatorSignalConnection
-            connect computers.computerA.actuationSignalOutPort.actuationSignal
-            to actuators_1.actuatorC.actuationSignalInPort.actuationSignal;
+            connect computers.computerA.actuationSignalOutPort
+            to actuators_1.actuatorC.actuationSignalInPort;
         architecturalChoices :>> gncDesignSpace::architecturalChoices {
             actuatorsInstantiationChoice
                 :>> gncDesignSpace::architecturalChoices::actuatorsInstantiationChoice = 3;

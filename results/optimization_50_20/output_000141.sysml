@@ -10,8 +10,8 @@ package 'Architecture Package 42770' {
             dataConnection_1, dataConnection_2,
         );
         connection actuatorSignalConnection :>> gncDesignSpace::actuatorSignalConnection
-            connect computers.computerB.actuationSignalOutPort.actuationSignal
-            to actuators.actuatorA.actuationSignalInPort.actuationSignal;
+            connect computers.computerB.actuationSignalOutPort
+            to actuators.actuatorA.actuationSignalInPort;
         attribute mass :>> gncDesignSpace::mass = 17.5 [SI::kilogram];
         attribute failureRate :>> gncDesignSpace::failureRate = 0.000120011798200048;
         attribute logFailureRate :>> gncDesignSpace::logFailureRate = -3.92077605694148;
@@ -84,9 +84,9 @@ package 'Architecture Package 42770' {
             attribute failureRate :>> gncDesignSpace::sensors::failureRate = 0.0001;
         }
         connection dataConnection_1 :> dataConnection
-            connect sensors_1.sensorA.dataOutPort.data to computers.computerB.dataInPort.data;
+            connect sensors_1.sensorA.dataOutPort to computers.computerB.dataInPort;
         connection dataConnection_2 :> dataConnection
-            connect sensors_2.sensorB.dataOutPort.data to computers.computerB.dataInPort.data;
+            connect sensors_2.sensorB.dataOutPort to computers.computerB.dataInPort;
         architecturalChoices :>> gncDesignSpace::architecturalChoices {
             actuatorsInstantiationChoice
                 :>> gncDesignSpace::architecturalChoices::actuatorsInstantiationChoice = 1;

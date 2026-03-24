@@ -104,15 +104,15 @@ package 'Architecture Package 171563' {
             attribute failureRate :>> gncDesignSpace::actuators::failureRate = 0.0002;
         }
         connection dataConnection_1 :> dataConnection
-            connect sensors_1.sensorA.dataOutPort.data to computers.computerC.dataInPort.data;
+            connect sensors_1.sensorA.dataOutPort to computers.computerC.dataInPort;
         connection dataConnection_2 :> dataConnection
-            connect sensors_2.sensorC.dataOutPort.data to computers.computerC.dataInPort.data;
+            connect sensors_2.sensorC.dataOutPort to computers.computerC.dataInPort;
         connection actuatorSignalConnection_1 :> actuatorSignalConnection
-            connect computers.computerC.actuationSignalOutPort.actuationSignal
-            to actuators_1.actuatorA.actuationSignalInPort.actuationSignal;
+            connect computers.computerC.actuationSignalOutPort
+            to actuators_1.actuatorA.actuationSignalInPort;
         connection actuatorSignalConnection_2 :> actuatorSignalConnection
-            connect computers.computerC.actuationSignalOutPort.actuationSignal
-            to actuators_2.actuatorB.actuationSignalInPort.actuationSignal;
+            connect computers.computerC.actuationSignalOutPort
+            to actuators_2.actuatorB.actuationSignalInPort;
         architecturalChoices :>> gncDesignSpace::architecturalChoices {
             actuatorsInstantiationChoice
                 :>> gncDesignSpace::architecturalChoices::actuatorsInstantiationChoice = 2;

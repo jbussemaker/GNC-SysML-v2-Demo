@@ -179,33 +179,33 @@ package 'Architecture Package 118665' {
             attribute failureRate :>> gncDesignSpace::actuators::failureRate = 8e-05;
         }
         connection dataConnection_1 :> dataConnection
-            connect sensors_1.sensorA.dataOutPort.data to computers_2.computerA.dataInPort.data;
+            connect sensors_1.sensorA.dataOutPort to computers_2.computerA.dataInPort;
         connection dataConnection_2 :> dataConnection
-            connect sensors_1.sensorA.dataOutPort.data to computers_1.computerA.dataInPort.data;
+            connect sensors_1.sensorA.dataOutPort to computers_1.computerA.dataInPort;
         connection dataConnection_3 :> dataConnection
-            connect sensors_1.sensorA.dataOutPort.data to computers_3.computerA.dataInPort.data;
+            connect sensors_1.sensorA.dataOutPort to computers_3.computerA.dataInPort;
         connection dataConnection_4 :> dataConnection
-            connect sensors_2.sensorA.dataOutPort.data to computers_1.computerA.dataInPort.data;
+            connect sensors_2.sensorA.dataOutPort to computers_1.computerA.dataInPort;
         connection dataConnection_5 :> dataConnection
-            connect sensors_3.sensorA.dataOutPort.data to computers_1.computerA.dataInPort.data;
+            connect sensors_3.sensorA.dataOutPort to computers_1.computerA.dataInPort;
         connection actuatorSignalConnection_1 :> actuatorSignalConnection
-            connect computers_1.computerA.actuationSignalOutPort.actuationSignal
-            to actuators_3.actuatorA.actuationSignalInPort.actuationSignal;
+            connect computers_1.computerA.actuationSignalOutPort
+            to actuators_3.actuatorA.actuationSignalInPort;
         connection actuatorSignalConnection_2 :> actuatorSignalConnection
-            connect computers_1.computerA.actuationSignalOutPort.actuationSignal
-            to actuators_2.actuatorA.actuationSignalInPort.actuationSignal;
+            connect computers_1.computerA.actuationSignalOutPort
+            to actuators_2.actuatorA.actuationSignalInPort;
         connection actuatorSignalConnection_3 :> actuatorSignalConnection
-            connect computers_1.computerA.actuationSignalOutPort.actuationSignal
-            to actuators_1.actuatorA.actuationSignalInPort.actuationSignal;
+            connect computers_1.computerA.actuationSignalOutPort
+            to actuators_1.actuatorA.actuationSignalInPort;
         connection actuatorSignalConnection_4 :> actuatorSignalConnection
-            connect computers_2.computerA.actuationSignalOutPort.actuationSignal
-            to actuators_2.actuatorA.actuationSignalInPort.actuationSignal;
+            connect computers_2.computerA.actuationSignalOutPort
+            to actuators_2.actuatorA.actuationSignalInPort;
         connection actuatorSignalConnection_5 :> actuatorSignalConnection
-            connect computers_2.computerA.actuationSignalOutPort.actuationSignal
-            to actuators_1.actuatorA.actuationSignalInPort.actuationSignal;
+            connect computers_2.computerA.actuationSignalOutPort
+            to actuators_1.actuatorA.actuationSignalInPort;
         connection actuatorSignalConnection_6 :> actuatorSignalConnection
-            connect computers_3.computerA.actuationSignalOutPort.actuationSignal
-            to actuators_1.actuatorA.actuationSignalInPort.actuationSignal;
+            connect computers_3.computerA.actuationSignalOutPort
+            to actuators_1.actuatorA.actuationSignalInPort;
         architecturalChoices :>> gncDesignSpace::architecturalChoices {
             actuatorsInstantiationChoice
                 :>> gncDesignSpace::architecturalChoices::actuatorsInstantiationChoice = 3;

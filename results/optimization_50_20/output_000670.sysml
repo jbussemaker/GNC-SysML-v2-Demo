@@ -7,10 +7,10 @@ package 'Architecture Package 250427' {
         action sendActuatorSignal :>> gncDesignSpace::sendActuatorSignal;
         action controlOrientation :>> gncDesignSpace::controlOrientation;
         connection dataConnection :>> gncDesignSpace::dataConnection
-            connect sensors.sensorA.dataOutPort.data to computers.computerA.dataInPort.data;
+            connect sensors.sensorA.dataOutPort to computers.computerA.dataInPort;
         connection actuatorSignalConnection :>> gncDesignSpace::actuatorSignalConnection
-            connect computers.computerA.actuationSignalOutPort.actuationSignal
-            to actuators.actuatorA.actuationSignalInPort.actuationSignal;
+            connect computers.computerA.actuationSignalOutPort
+            to actuators.actuatorA.actuationSignalInPort;
         attribute mass :>> gncDesignSpace::mass = 9.5 [SI::kilogram];
         attribute failureRate :>> gncDesignSpace::failureRate = 0.0003299650012;
         attribute logFailureRate :>> gncDesignSpace::logFailureRate = -3.481532122521482;

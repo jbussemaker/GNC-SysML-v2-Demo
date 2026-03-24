@@ -178,37 +178,37 @@ package 'Architecture Package 137486' {
             attribute failureRate :>> gncDesignSpace::actuators::failureRate = 0.0001;
         }
         connection dataConnection_1 :> dataConnection
-            connect sensors_1.sensorA.dataOutPort.data to computers_2.computerB.dataInPort.data;
+            connect sensors_1.sensorA.dataOutPort to computers_2.computerB.dataInPort;
         connection dataConnection_2 :> dataConnection
-            connect sensors_1.sensorA.dataOutPort.data to computers_1.computerB.dataInPort.data;
+            connect sensors_1.sensorA.dataOutPort to computers_1.computerB.dataInPort;
         connection dataConnection_3 :> dataConnection
-            connect sensors_1.sensorA.dataOutPort.data to computers_3.computerC.dataInPort.data;
+            connect sensors_1.sensorA.dataOutPort to computers_3.computerC.dataInPort;
         connection dataConnection_4 :> dataConnection
-            connect sensors_2.sensorA.dataOutPort.data to computers_2.computerB.dataInPort.data;
+            connect sensors_2.sensorA.dataOutPort to computers_2.computerB.dataInPort;
         connection dataConnection_5 :> dataConnection
-            connect sensors_2.sensorA.dataOutPort.data to computers_3.computerC.dataInPort.data;
+            connect sensors_2.sensorA.dataOutPort to computers_3.computerC.dataInPort;
         connection dataConnection_6 :> dataConnection
-            connect sensors_3.sensorB.dataOutPort.data to computers_2.computerB.dataInPort.data;
+            connect sensors_3.sensorB.dataOutPort to computers_2.computerB.dataInPort;
         connection dataConnection_7 :> dataConnection
-            connect sensors_3.sensorB.dataOutPort.data to computers_3.computerC.dataInPort.data;
+            connect sensors_3.sensorB.dataOutPort to computers_3.computerC.dataInPort;
         connection actuatorSignalConnection_1 :> actuatorSignalConnection
-            connect computers_1.computerB.actuationSignalOutPort.actuationSignal
-            to actuators_1.actuatorA.actuationSignalInPort.actuationSignal;
+            connect computers_1.computerB.actuationSignalOutPort
+            to actuators_1.actuatorA.actuationSignalInPort;
         connection actuatorSignalConnection_2 :> actuatorSignalConnection
-            connect computers_1.computerB.actuationSignalOutPort.actuationSignal
-            to actuators_3.actuatorC.actuationSignalInPort.actuationSignal;
+            connect computers_1.computerB.actuationSignalOutPort
+            to actuators_3.actuatorC.actuationSignalInPort;
         connection actuatorSignalConnection_3 :> actuatorSignalConnection
-            connect computers_2.computerB.actuationSignalOutPort.actuationSignal
-            to actuators_1.actuatorA.actuationSignalInPort.actuationSignal;
+            connect computers_2.computerB.actuationSignalOutPort
+            to actuators_1.actuatorA.actuationSignalInPort;
         connection actuatorSignalConnection_4 :> actuatorSignalConnection
-            connect computers_2.computerB.actuationSignalOutPort.actuationSignal
-            to actuators_2.actuatorA.actuationSignalInPort.actuationSignal;
+            connect computers_2.computerB.actuationSignalOutPort
+            to actuators_2.actuatorA.actuationSignalInPort;
         connection actuatorSignalConnection_5 :> actuatorSignalConnection
-            connect computers_2.computerB.actuationSignalOutPort.actuationSignal
-            to actuators_3.actuatorC.actuationSignalInPort.actuationSignal;
+            connect computers_2.computerB.actuationSignalOutPort
+            to actuators_3.actuatorC.actuationSignalInPort;
         connection actuatorSignalConnection_6 :> actuatorSignalConnection
-            connect computers_3.computerC.actuationSignalOutPort.actuationSignal
-            to actuators_3.actuatorC.actuationSignalInPort.actuationSignal;
+            connect computers_3.computerC.actuationSignalOutPort
+            to actuators_3.actuatorC.actuationSignalInPort;
         architecturalChoices :>> gncDesignSpace::architecturalChoices {
             actuatorsInstantiationChoice
                 :>> gncDesignSpace::architecturalChoices::actuatorsInstantiationChoice = 3;

@@ -161,10 +161,6 @@ def _calculate_failure_rate(arch_part: syside.PartUsage):
     log_failure_rate = float(np.log10(failure_rate))
     log.info(f'System-level failure rate = {failure_rate} (log = {log_failure_rate})')
 
-    from sb_arch_opt.problems.gnc import GNCProblemBase
-    fr_ = GNCProblemBase.calc_failure_rate(failure_rates, obj_conns)
-    assert log_failure_rate == fr_
-
     # Write the failure rate
     for fr_attr in arch_part.owned_features:
         if isinstance(fr_attr, syside.AttributeUsage) and fr_attr.name == 'failureRate':

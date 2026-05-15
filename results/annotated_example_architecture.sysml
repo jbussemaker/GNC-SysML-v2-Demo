@@ -7,7 +7,7 @@ package 'Example Architecture Instance Package' {
     private import 'Guidance, Navigation & Control'::*;
     
     // The architecture instance subsets the design space
-    #architecture part <archId481> 'Architecture Example' :> gncDesignSpace {
+    #architecture part def <archId481> 'Architecture Example' :> GNCDesignSpace {
 
         // Local redefinition of the top-level functions
         action :>> provideSensorData;
@@ -15,9 +15,9 @@ package 'Example Architecture Instance Package' {
         action :>> controlOrientation;
         
         // Redefinition of the top-level attributes, with values assigned after evaluation
-        attribute mass :>> gncDesignSpace::mass = 37 [SI::kg];
-        attribute failureRate :>> gncDesignSpace::failureRate = 0.00015001679672012197;
-        attribute logFailureRate :>> gncDesignSpace::logFailureRate = -3.8238601121811935;
+        attribute redefines mass = 37 [SI::kg];
+        attribute :>> failureRate = 0.00015001679672012197;
+        attribute :>> logFailureRate = -3.8238601121811935;
 
         // Redefinition of the sensors subsystem: only 1 instance
         #subsystem part :>> sensors {
@@ -44,7 +44,7 @@ package 'Example Architecture Instance Package' {
         }
 
         // Redefinition of the computers, with 2 instances
-        part :>> computers [2] = (computers_1, computers_2);
+        part :>> computers [2] ordered = (computers_1, computers_2);
 
         #subsystem part computers_1 :> computers {
 
@@ -88,7 +88,7 @@ package 'Example Architecture Instance Package' {
         }
 
         // Redefinition of the actuators, with 2 instances
-        part actuators :>> actuators [2] = (actuators_1, actuators_2);
+        part :>> actuators [2] ordered = (actuators_1, actuators_2);
 
         #subsystem part actuators_1 :> actuators {
             
@@ -128,7 +128,7 @@ package 'Example Architecture Instance Package' {
         }
 
         // Redefinition and subsetting of established data connections (sensors to computers)
-        connection :>> dataConnection [2] = (dataConnection_1, dataConnection_2);
+        connection :>> dataConnection [2] ordered = (dataConnection_1, dataConnection_2);
         
         connection dataConnection_1 :> dataConnection
             connect sensors.sensorA.dataOutPort to computers_1.computerB.dataInPort;
@@ -136,7 +136,7 @@ package 'Example Architecture Instance Package' {
             connect sensors.sensorA.dataOutPort to computers_2.computerC.dataInPort;
         
         // Redefinition and subsetting of established actuation signal connections (computers to actuators)
-        connection :>> actuatorSignalConnection [2] = (
+        connection :>> actuatorSignalConnection [2] ordered = (
             actuatorSignalConnection_1, actuatorSignalConnection_2);
         
         connection actuatorSignalConnection_1 :> actuatorSignalConnection

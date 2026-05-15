@@ -1,136 +1,136 @@
 package 'Architecture Package 171757' {
     private import 'Guidance, Navigation & Control'::*;
     private import ArchitectureDesign::*;
-    #ArchitectureInstanceDefs::architecture part <archId171757> 'Architecture #447' :> gncDesignSpace {
-        action provideSensorData :>> gncDesignSpace::provideSensorData;
-        action sendActuatorSignal :>> gncDesignSpace::sendActuatorSignal;
-        action controlOrientation :>> gncDesignSpace::controlOrientation;
-        connection dataConnection :>> gncDesignSpace::dataConnection [5] = (
+    #architecture part def <archId171757> 'Architecture #447' :> GNCDesignSpace {
+        action provideSensorData :>> GNCDesignSpace::provideSensorData;
+        action sendActuatorSignal :>> GNCDesignSpace::sendActuatorSignal;
+        action controlOrientation :>> GNCDesignSpace::controlOrientation;
+        connection dataConnection :>> GNCDesignSpace::dataConnection [5] = (
             dataConnection_1, dataConnection_2, dataConnection_3, dataConnection_4, dataConnection_5,
         );
-        connection actuatorSignalConnection :>> gncDesignSpace::actuatorSignalConnection [4] = (
+        connection actuatorSignalConnection :>> GNCDesignSpace::actuatorSignalConnection [4] = (
             actuatorSignalConnection_1, actuatorSignalConnection_2, actuatorSignalConnection_3,
             actuatorSignalConnection_4,
         );
-        attribute mass :>> gncDesignSpace::mass;
-        attribute failureRate :>> gncDesignSpace::failureRate;
-        attribute logFailureRate :>> gncDesignSpace::logFailureRate;
-        part sensors :>> gncDesignSpace::sensors [3] = (sensors_1, sensors_2, sensors_3,);
-        part computers :>> gncDesignSpace::computers [3] = (computers_1, computers_2, computers_3,);
-        part actuators :>> gncDesignSpace::actuators [2] = (actuators_1, actuators_2,);
-        #ArchitectureDesignProblemDefs::ArchitectureDesignSpaceDef::subsystem part sensors_1 :> sensors {
-            part sensorA :>> gncDesignSpace::sensors::sensorA {
-                perform provideSensorData [1] :>> gncDesignSpace::sensors::sensorA::provideSensorDataPerformance;
-                attribute mass :>> gncDesignSpace::sensors::sensorA::mass = 3 [SI::kg];
-                attribute failureRate :>> gncDesignSpace::sensors::sensorA::failureRate = 0.00015;
+        attribute mass :>> GNCDesignSpace::mass;
+        attribute failureRate :>> GNCDesignSpace::failureRate;
+        attribute logFailureRate :>> GNCDesignSpace::logFailureRate;
+        part sensors :>> GNCDesignSpace::sensors [3] = (sensors_1, sensors_2, sensors_3,);
+        part computers :>> GNCDesignSpace::computers [3] = (computers_1, computers_2, computers_3,);
+        part actuators :>> GNCDesignSpace::actuators [2] = (actuators_1, actuators_2,);
+        #subsystem part sensors_1 :> sensors {
+            part sensorA :>> GNCDesignSpace::sensors::sensorA {
+                perform provideSensorData [1] :>> GNCDesignSpace::sensors::sensorA::provideSensorDataPerformance;
+                attribute mass :>> GNCDesignSpace::sensors::sensorA::mass = 3 [SI::kg];
+                attribute failureRate :>> GNCDesignSpace::sensors::sensorA::failureRate = 0.00015;
                 port dataOutPort :>> Sensor::dataOutPort { out data :>> DataOutPort::data [1]; }
             }
-            part sensorB :>> gncDesignSpace::sensors::sensorB [0];
-            part sensorC :>> gncDesignSpace::sensors::sensorC [0];
-            attribute mass :>> gncDesignSpace::sensors::mass;
-            attribute failureRate :>> gncDesignSpace::sensors::failureRate;
+            part sensorB :>> GNCDesignSpace::sensors::sensorB [0];
+            part sensorC :>> GNCDesignSpace::sensors::sensorC [0];
+            attribute mass :>> GNCDesignSpace::sensors::mass;
+            attribute failureRate :>> GNCDesignSpace::sensors::failureRate;
         }
-        #ArchitectureDesignProblemDefs::ArchitectureDesignSpaceDef::subsystem part sensors_2 :> sensors {
-            part sensorA :>> gncDesignSpace::sensors::sensorA {
-                perform provideSensorData [1] :>> gncDesignSpace::sensors::sensorA::provideSensorDataPerformance;
-                attribute mass :>> gncDesignSpace::sensors::sensorA::mass = 3 [SI::kg];
-                attribute failureRate :>> gncDesignSpace::sensors::sensorA::failureRate = 0.00015;
+        #subsystem part sensors_2 :> sensors {
+            part sensorA :>> GNCDesignSpace::sensors::sensorA {
+                perform provideSensorData [1] :>> GNCDesignSpace::sensors::sensorA::provideSensorDataPerformance;
+                attribute mass :>> GNCDesignSpace::sensors::sensorA::mass = 3 [SI::kg];
+                attribute failureRate :>> GNCDesignSpace::sensors::sensorA::failureRate = 0.00015;
                 port dataOutPort :>> Sensor::dataOutPort { out data :>> DataOutPort::data [1]; }
             }
-            part sensorB :>> gncDesignSpace::sensors::sensorB [0];
-            part sensorC :>> gncDesignSpace::sensors::sensorC [0];
-            attribute mass :>> gncDesignSpace::sensors::mass;
-            attribute failureRate :>> gncDesignSpace::sensors::failureRate;
+            part sensorB :>> GNCDesignSpace::sensors::sensorB [0];
+            part sensorC :>> GNCDesignSpace::sensors::sensorC [0];
+            attribute mass :>> GNCDesignSpace::sensors::mass;
+            attribute failureRate :>> GNCDesignSpace::sensors::failureRate;
         }
-        #ArchitectureDesignProblemDefs::ArchitectureDesignSpaceDef::subsystem part sensors_3 :> sensors {
-            part sensorA :>> gncDesignSpace::sensors::sensorA {
-                perform provideSensorData [1] :>> gncDesignSpace::sensors::sensorA::provideSensorDataPerformance;
-                attribute mass :>> gncDesignSpace::sensors::sensorA::mass = 3 [SI::kg];
-                attribute failureRate :>> gncDesignSpace::sensors::sensorA::failureRate = 0.00015;
+        #subsystem part sensors_3 :> sensors {
+            part sensorA :>> GNCDesignSpace::sensors::sensorA {
+                perform provideSensorData [1] :>> GNCDesignSpace::sensors::sensorA::provideSensorDataPerformance;
+                attribute mass :>> GNCDesignSpace::sensors::sensorA::mass = 3 [SI::kg];
+                attribute failureRate :>> GNCDesignSpace::sensors::sensorA::failureRate = 0.00015;
                 port dataOutPort :>> Sensor::dataOutPort { out data :>> DataOutPort::data [3]; }
             }
-            part sensorB :>> gncDesignSpace::sensors::sensorB [0];
-            part sensorC :>> gncDesignSpace::sensors::sensorC [0];
-            attribute mass :>> gncDesignSpace::sensors::mass;
-            attribute failureRate :>> gncDesignSpace::sensors::failureRate;
+            part sensorB :>> GNCDesignSpace::sensors::sensorB [0];
+            part sensorC :>> GNCDesignSpace::sensors::sensorC [0];
+            attribute mass :>> GNCDesignSpace::sensors::mass;
+            attribute failureRate :>> GNCDesignSpace::sensors::failureRate;
         }
-        #ArchitectureDesignProblemDefs::ArchitectureDesignSpaceDef::subsystem part computers_1 :> computers {
-            part computerC :>> gncDesignSpace::computers::computerC {
-                perform sendActuatorSignal [1] :>> gncDesignSpace::computers::computerC::sendActuatorSignalPerformance;
-                attribute mass :>> gncDesignSpace::computers::computerC::mass = 10 [SI::kg];
-                attribute failureRate :>> gncDesignSpace::computers::computerC::failureRate = 2e-05;
+        #subsystem part computers_1 :> computers {
+            part computerC :>> GNCDesignSpace::computers::computerC {
+                perform sendActuatorSignal [1] :>> GNCDesignSpace::computers::computerC::sendActuatorSignalPerformance;
+                attribute mass :>> GNCDesignSpace::computers::computerC::mass = 10 [SI::kg];
+                attribute failureRate :>> GNCDesignSpace::computers::computerC::failureRate = 2e-05;
                 port actuationSignalOutPort :>> Computer::actuationSignalOutPort {
                     out actuationSignal :>> ActuationSignalOutPort::actuationSignal [1];
                 }
                 port dataInPort :>> Computer::dataInPort { in data :>> DataOutPort::data [2]; }
-                #ArchitectureChoiceModelingDefs::needsAction ::> provideSensorData;
+                #needsAction ::> provideSensorData;
             }
-            part computerA :>> gncDesignSpace::computers::computerA [0];
-            part computerB :>> gncDesignSpace::computers::computerB [0];
-            attribute mass :>> gncDesignSpace::computers::mass;
-            attribute failureRate :>> gncDesignSpace::computers::failureRate;
+            part computerA :>> GNCDesignSpace::computers::computerA [0];
+            part computerB :>> GNCDesignSpace::computers::computerB [0];
+            attribute mass :>> GNCDesignSpace::computers::mass;
+            attribute failureRate :>> GNCDesignSpace::computers::failureRate;
         }
-        #ArchitectureDesignProblemDefs::ArchitectureDesignSpaceDef::subsystem part computers_2 :> computers {
-            part computerC :>> gncDesignSpace::computers::computerC {
-                perform sendActuatorSignal [1] :>> gncDesignSpace::computers::computerC::sendActuatorSignalPerformance;
-                attribute mass :>> gncDesignSpace::computers::computerC::mass = 10 [SI::kg];
-                attribute failureRate :>> gncDesignSpace::computers::computerC::failureRate = 2e-05;
+        #subsystem part computers_2 :> computers {
+            part computerC :>> GNCDesignSpace::computers::computerC {
+                perform sendActuatorSignal [1] :>> GNCDesignSpace::computers::computerC::sendActuatorSignalPerformance;
+                attribute mass :>> GNCDesignSpace::computers::computerC::mass = 10 [SI::kg];
+                attribute failureRate :>> GNCDesignSpace::computers::computerC::failureRate = 2e-05;
                 port actuationSignalOutPort :>> Computer::actuationSignalOutPort {
                     out actuationSignal :>> ActuationSignalOutPort::actuationSignal [2];
                 }
                 port dataInPort :>> Computer::dataInPort { in data :>> DataOutPort::data [1]; }
-                #ArchitectureChoiceModelingDefs::needsAction ::> provideSensorData;
+                #needsAction ::> provideSensorData;
             }
-            part computerA :>> gncDesignSpace::computers::computerA [0];
-            part computerB :>> gncDesignSpace::computers::computerB [0];
-            attribute mass :>> gncDesignSpace::computers::mass;
-            attribute failureRate :>> gncDesignSpace::computers::failureRate;
+            part computerA :>> GNCDesignSpace::computers::computerA [0];
+            part computerB :>> GNCDesignSpace::computers::computerB [0];
+            attribute mass :>> GNCDesignSpace::computers::mass;
+            attribute failureRate :>> GNCDesignSpace::computers::failureRate;
         }
-        #ArchitectureDesignProblemDefs::ArchitectureDesignSpaceDef::subsystem part computers_3 :> computers {
-            part computerC :>> gncDesignSpace::computers::computerC {
-                perform sendActuatorSignal [1] :>> gncDesignSpace::computers::computerC::sendActuatorSignalPerformance;
-                attribute mass :>> gncDesignSpace::computers::computerC::mass = 10 [SI::kg];
-                attribute failureRate :>> gncDesignSpace::computers::computerC::failureRate = 2e-05;
+        #subsystem part computers_3 :> computers {
+            part computerC :>> GNCDesignSpace::computers::computerC {
+                perform sendActuatorSignal [1] :>> GNCDesignSpace::computers::computerC::sendActuatorSignalPerformance;
+                attribute mass :>> GNCDesignSpace::computers::computerC::mass = 10 [SI::kg];
+                attribute failureRate :>> GNCDesignSpace::computers::computerC::failureRate = 2e-05;
                 port actuationSignalOutPort :>> Computer::actuationSignalOutPort {
                     out actuationSignal :>> ActuationSignalOutPort::actuationSignal [1];
                 }
                 port dataInPort :>> Computer::dataInPort { in data :>> DataOutPort::data [2]; }
-                #ArchitectureChoiceModelingDefs::needsAction ::> provideSensorData;
+                #needsAction ::> provideSensorData;
             }
-            part computerA :>> gncDesignSpace::computers::computerA [0];
-            part computerB :>> gncDesignSpace::computers::computerB [0];
-            attribute mass :>> gncDesignSpace::computers::mass;
-            attribute failureRate :>> gncDesignSpace::computers::failureRate;
+            part computerA :>> GNCDesignSpace::computers::computerA [0];
+            part computerB :>> GNCDesignSpace::computers::computerB [0];
+            attribute mass :>> GNCDesignSpace::computers::mass;
+            attribute failureRate :>> GNCDesignSpace::computers::failureRate;
         }
-        #ArchitectureDesignProblemDefs::ArchitectureDesignSpaceDef::subsystem part actuators_1 :> actuators {
-            part actuatorA :>> gncDesignSpace::actuators::actuatorA {
-                perform controlOrientation [1] :>> gncDesignSpace::actuators::actuatorA::controlOrientationPerformance;
-                attribute mass :>> gncDesignSpace::actuators::actuatorA::mass = 3.5 [SI::kg];
-                attribute failureRate :>> gncDesignSpace::actuators::actuatorA::failureRate = 8e-05;
+        #subsystem part actuators_1 :> actuators {
+            part actuatorA :>> GNCDesignSpace::actuators::actuatorA {
+                perform controlOrientation [1] :>> GNCDesignSpace::actuators::actuatorA::controlOrientationPerformance;
+                attribute mass :>> GNCDesignSpace::actuators::actuatorA::mass = 3.5 [SI::kg];
+                attribute failureRate :>> GNCDesignSpace::actuators::actuatorA::failureRate = 8e-05;
                 port actuationSignalInPort :>> Actuator::actuationSignalInPort {
                     in actuationSignal :>> ActuationSignalOutPort::actuationSignal [3];
                 }
-                #ArchitectureChoiceModelingDefs::needsAction ::> sendActuatorSignal;
+                #needsAction ::> sendActuatorSignal;
             }
-            part actuatorB :>> gncDesignSpace::actuators::actuatorB [0];
-            part actuatorC :>> gncDesignSpace::actuators::actuatorC [0];
-            attribute mass :>> gncDesignSpace::actuators::mass;
-            attribute failureRate :>> gncDesignSpace::actuators::failureRate;
+            part actuatorB :>> GNCDesignSpace::actuators::actuatorB [0];
+            part actuatorC :>> GNCDesignSpace::actuators::actuatorC [0];
+            attribute mass :>> GNCDesignSpace::actuators::mass;
+            attribute failureRate :>> GNCDesignSpace::actuators::failureRate;
         }
-        #ArchitectureDesignProblemDefs::ArchitectureDesignSpaceDef::subsystem part actuators_2 :> actuators {
-            part actuatorA :>> gncDesignSpace::actuators::actuatorA {
-                perform controlOrientation [1] :>> gncDesignSpace::actuators::actuatorA::controlOrientationPerformance;
-                attribute mass :>> gncDesignSpace::actuators::actuatorA::mass = 3.5 [SI::kg];
-                attribute failureRate :>> gncDesignSpace::actuators::actuatorA::failureRate = 8e-05;
+        #subsystem part actuators_2 :> actuators {
+            part actuatorA :>> GNCDesignSpace::actuators::actuatorA {
+                perform controlOrientation [1] :>> GNCDesignSpace::actuators::actuatorA::controlOrientationPerformance;
+                attribute mass :>> GNCDesignSpace::actuators::actuatorA::mass = 3.5 [SI::kg];
+                attribute failureRate :>> GNCDesignSpace::actuators::actuatorA::failureRate = 8e-05;
                 port actuationSignalInPort :>> Actuator::actuationSignalInPort {
                     in actuationSignal :>> ActuationSignalOutPort::actuationSignal [1];
                 }
-                #ArchitectureChoiceModelingDefs::needsAction ::> sendActuatorSignal;
+                #needsAction ::> sendActuatorSignal;
             }
-            part actuatorB :>> gncDesignSpace::actuators::actuatorB [0];
-            part actuatorC :>> gncDesignSpace::actuators::actuatorC [0];
-            attribute mass :>> gncDesignSpace::actuators::mass;
-            attribute failureRate :>> gncDesignSpace::actuators::failureRate;
+            part actuatorB :>> GNCDesignSpace::actuators::actuatorB [0];
+            part actuatorC :>> GNCDesignSpace::actuators::actuatorC [0];
+            attribute mass :>> GNCDesignSpace::actuators::mass;
+            attribute failureRate :>> GNCDesignSpace::actuators::failureRate;
         }
         connection dataConnection_1 :> dataConnection
             connect sensors_1.sensorA.dataOutPort to computers_1.computerC.dataInPort;
@@ -154,95 +154,95 @@ package 'Architecture Package 171757' {
         connection actuatorSignalConnection_4 :> actuatorSignalConnection
             connect computers_3.computerC.actuationSignalOutPort
             to actuators_1.actuatorA.actuationSignalInPort;
-        architecturalChoices :>> gncDesignSpace::architecturalChoices {
-            actuatorsInstantiationChoice :>> gncDesignSpace::architecturalChoices::actuatorsInstantiationChoice = 2;
-            computersInstantiationChoice :>> gncDesignSpace::architecturalChoices::computersInstantiationChoice = 3;
-            sensorsInstantiationChoice :>> gncDesignSpace::architecturalChoices::sensorsInstantiationChoice = 3;
+        architecturalChoices :>> GNCDesignSpace::architecturalChoices {
+            actuatorsInstantiationChoice :>> GNCDesignSpace::architecturalChoices::actuatorsInstantiationChoice = 2;
+            computersInstantiationChoice :>> GNCDesignSpace::architecturalChoices::computersInstantiationChoice = 3;
+            sensorsInstantiationChoice :>> GNCDesignSpace::architecturalChoices::sensorsInstantiationChoice = 3;
             controlOrientationFulfillmentChoiceSys1
-                :>> gncDesignSpace::architecturalChoices::controlOrientationFulfillmentChoiceSys1
+                :>> GNCDesignSpace::architecturalChoices::controlOrientationFulfillmentChoiceSys1
                 ::> actuators_1.actuatorA;
             controlOrientationFulfillmentChoiceSys2
-                :>> gncDesignSpace::architecturalChoices::controlOrientationFulfillmentChoiceSys2
+                :>> GNCDesignSpace::architecturalChoices::controlOrientationFulfillmentChoiceSys2
                 ::> actuators_2.actuatorA;
             controlOrientationFulfillmentChoiceSys3
-                :>> gncDesignSpace::architecturalChoices::controlOrientationFulfillmentChoiceSys3 [0];
+                :>> GNCDesignSpace::architecturalChoices::controlOrientationFulfillmentChoiceSys3 [0];
             sendActuatorSignalFulfillmentChoiceSys1
-                :>> gncDesignSpace::architecturalChoices::sendActuatorSignalFulfillmentChoiceSys1
+                :>> GNCDesignSpace::architecturalChoices::sendActuatorSignalFulfillmentChoiceSys1
                 ::> computers_1.computerC;
             sendActuatorSignalFulfillmentChoiceSys2
-                :>> gncDesignSpace::architecturalChoices::sendActuatorSignalFulfillmentChoiceSys2
+                :>> GNCDesignSpace::architecturalChoices::sendActuatorSignalFulfillmentChoiceSys2
                 ::> computers_2.computerC;
             sendActuatorSignalFulfillmentChoiceSys3
-                :>> gncDesignSpace::architecturalChoices::sendActuatorSignalFulfillmentChoiceSys3
+                :>> GNCDesignSpace::architecturalChoices::sendActuatorSignalFulfillmentChoiceSys3
                 ::> computers_3.computerC;
             provideSensorDataFulfillmentChoiceSys1
-                :>> gncDesignSpace::architecturalChoices::provideSensorDataFulfillmentChoiceSys1 ::> sensors_1.sensorA;
+                :>> GNCDesignSpace::architecturalChoices::provideSensorDataFulfillmentChoiceSys1 ::> sensors_1.sensorA;
             provideSensorDataFulfillmentChoiceSys2
-                :>> gncDesignSpace::architecturalChoices::provideSensorDataFulfillmentChoiceSys2 ::> sensors_2.sensorA;
+                :>> GNCDesignSpace::architecturalChoices::provideSensorDataFulfillmentChoiceSys2 ::> sensors_2.sensorA;
             provideSensorDataFulfillmentChoiceSys3
-                :>> gncDesignSpace::architecturalChoices::provideSensorDataFulfillmentChoiceSys3 ::> sensors_3.sensorA;
+                :>> GNCDesignSpace::architecturalChoices::provideSensorDataFulfillmentChoiceSys3 ::> sensors_3.sensorA;
             actuatorSignalConnectionConnectionChoice
-                :>> gncDesignSpace::architecturalChoices::actuatorSignalConnectionConnectionChoice
+                :>> GNCDesignSpace::architecturalChoices::actuatorSignalConnectionConnectionChoice
                 ::> actuatorSignalConnection_1;
             dataConnectionConnectionChoice
-                :>> gncDesignSpace::architecturalChoices::dataConnectionConnectionChoice ::> dataConnection_1;
+                :>> GNCDesignSpace::architecturalChoices::dataConnectionConnectionChoice ::> dataConnection_1;
         }
-        formalDesignProblem :>> gncDesignSpace::formalDesignProblem {
-            actuatorsInstantiationDesVar :>> gncDesignSpace::formalDesignProblem::actuatorsInstantiationDesVar = 2;
+        formalDesignProblem :>> GNCDesignSpace::formalDesignProblem {
+            actuatorsInstantiationDesVar :>> GNCDesignSpace::formalDesignProblem::actuatorsInstantiationDesVar = 2;
             controlOrientationFulfillmentChoiceSys1DesVar
-                :>> gncDesignSpace::formalDesignProblem::controlOrientationFulfillmentChoiceSys1DesVar = 0;
+                :>> GNCDesignSpace::formalDesignProblem::controlOrientationFulfillmentChoiceSys1DesVar = 0;
             controlOrientationFulfillmentChoiceSys2DesVar
-                :>> gncDesignSpace::formalDesignProblem::controlOrientationFulfillmentChoiceSys2DesVar = 0;
+                :>> GNCDesignSpace::formalDesignProblem::controlOrientationFulfillmentChoiceSys2DesVar = 0;
             controlOrientationFulfillmentChoiceSys3DesVar
-                :>> gncDesignSpace::formalDesignProblem::controlOrientationFulfillmentChoiceSys3DesVar = null;
-            computersInstantiationDesVar :>> gncDesignSpace::formalDesignProblem::computersInstantiationDesVar = 3;
+                :>> GNCDesignSpace::formalDesignProblem::controlOrientationFulfillmentChoiceSys3DesVar = null;
+            computersInstantiationDesVar :>> GNCDesignSpace::formalDesignProblem::computersInstantiationDesVar = 3;
             sendActuatorSignalFulfillmentChoiceSys1DesVar
-                :>> gncDesignSpace::formalDesignProblem::sendActuatorSignalFulfillmentChoiceSys1DesVar = 2;
+                :>> GNCDesignSpace::formalDesignProblem::sendActuatorSignalFulfillmentChoiceSys1DesVar = 2;
             sendActuatorSignalFulfillmentChoiceSys2DesVar
-                :>> gncDesignSpace::formalDesignProblem::sendActuatorSignalFulfillmentChoiceSys2DesVar = 2;
+                :>> GNCDesignSpace::formalDesignProblem::sendActuatorSignalFulfillmentChoiceSys2DesVar = 2;
             sendActuatorSignalFulfillmentChoiceSys3DesVar
-                :>> gncDesignSpace::formalDesignProblem::sendActuatorSignalFulfillmentChoiceSys3DesVar = 2;
-            sensorsInstantiationDesVar :>> gncDesignSpace::formalDesignProblem::sensorsInstantiationDesVar = 3;
+                :>> GNCDesignSpace::formalDesignProblem::sendActuatorSignalFulfillmentChoiceSys3DesVar = 2;
+            sensorsInstantiationDesVar :>> GNCDesignSpace::formalDesignProblem::sensorsInstantiationDesVar = 3;
             provideSensorDataFulfillmentChoiceSys1DesVar
-                :>> gncDesignSpace::formalDesignProblem::provideSensorDataFulfillmentChoiceSys1DesVar = 0;
+                :>> GNCDesignSpace::formalDesignProblem::provideSensorDataFulfillmentChoiceSys1DesVar = 0;
             provideSensorDataFulfillmentChoiceSys2DesVar
-                :>> gncDesignSpace::formalDesignProblem::provideSensorDataFulfillmentChoiceSys2DesVar = 0;
+                :>> GNCDesignSpace::formalDesignProblem::provideSensorDataFulfillmentChoiceSys2DesVar = 0;
             provideSensorDataFulfillmentChoiceSys3DesVar
-                :>> gncDesignSpace::formalDesignProblem::provideSensorDataFulfillmentChoiceSys3DesVar = 0;
+                :>> GNCDesignSpace::formalDesignProblem::provideSensorDataFulfillmentChoiceSys3DesVar = 0;
             actuatorSignalConnectionConnectionDesVar
-                :>> gncDesignSpace::formalDesignProblem::actuatorSignalConnectionConnectionDesVar = 1;
+                :>> GNCDesignSpace::formalDesignProblem::actuatorSignalConnectionConnectionDesVar = 1;
             actuatorSignalConnectionConnectionDesVar2
-                :>> gncDesignSpace::formalDesignProblem::actuatorSignalConnectionConnectionDesVar2 = 0;
+                :>> GNCDesignSpace::formalDesignProblem::actuatorSignalConnectionConnectionDesVar2 = 0;
             actuatorSignalConnectionConnectionDesVar3
-                :>> gncDesignSpace::formalDesignProblem::actuatorSignalConnectionConnectionDesVar3 = 1;
+                :>> GNCDesignSpace::formalDesignProblem::actuatorSignalConnectionConnectionDesVar3 = 1;
             actuatorSignalConnectionConnectionDesVar4
-                :>> gncDesignSpace::formalDesignProblem::actuatorSignalConnectionConnectionDesVar4 = 1;
+                :>> GNCDesignSpace::formalDesignProblem::actuatorSignalConnectionConnectionDesVar4 = 1;
             actuatorSignalConnectionConnectionDesVar5
-                :>> gncDesignSpace::formalDesignProblem::actuatorSignalConnectionConnectionDesVar5 = 1;
+                :>> GNCDesignSpace::formalDesignProblem::actuatorSignalConnectionConnectionDesVar5 = 1;
             actuatorSignalConnectionConnectionDesVar6
-                :>> gncDesignSpace::formalDesignProblem::actuatorSignalConnectionConnectionDesVar6 = 0;
+                :>> GNCDesignSpace::formalDesignProblem::actuatorSignalConnectionConnectionDesVar6 = 0;
             actuatorSignalConnectionConnectionDesVar7
-                :>> gncDesignSpace::formalDesignProblem::actuatorSignalConnectionConnectionDesVar7 = null;
+                :>> GNCDesignSpace::formalDesignProblem::actuatorSignalConnectionConnectionDesVar7 = null;
             actuatorSignalConnectionConnectionDesVar8
-                :>> gncDesignSpace::formalDesignProblem::actuatorSignalConnectionConnectionDesVar8 = null;
+                :>> GNCDesignSpace::formalDesignProblem::actuatorSignalConnectionConnectionDesVar8 = null;
             actuatorSignalConnectionConnectionDesVar9
-                :>> gncDesignSpace::formalDesignProblem::actuatorSignalConnectionConnectionDesVar9 = null;
-            dataConnectionConnectionDesVar :>> gncDesignSpace::formalDesignProblem::dataConnectionConnectionDesVar = 1;
-            dataConnectionConnectionDesVar2 :>> gncDesignSpace::formalDesignProblem::dataConnectionConnectionDesVar2 =
+                :>> GNCDesignSpace::formalDesignProblem::actuatorSignalConnectionConnectionDesVar9 = null;
+            dataConnectionConnectionDesVar :>> GNCDesignSpace::formalDesignProblem::dataConnectionConnectionDesVar = 1;
+            dataConnectionConnectionDesVar2 :>> GNCDesignSpace::formalDesignProblem::dataConnectionConnectionDesVar2 =
                 0;
-            dataConnectionConnectionDesVar3 :>> gncDesignSpace::formalDesignProblem::dataConnectionConnectionDesVar3 =
+            dataConnectionConnectionDesVar3 :>> GNCDesignSpace::formalDesignProblem::dataConnectionConnectionDesVar3 =
                 0;
-            dataConnectionConnectionDesVar4 :>> gncDesignSpace::formalDesignProblem::dataConnectionConnectionDesVar4 =
+            dataConnectionConnectionDesVar4 :>> GNCDesignSpace::formalDesignProblem::dataConnectionConnectionDesVar4 =
                 1;
-            dataConnectionConnectionDesVar5 :>> gncDesignSpace::formalDesignProblem::dataConnectionConnectionDesVar5 =
+            dataConnectionConnectionDesVar5 :>> GNCDesignSpace::formalDesignProblem::dataConnectionConnectionDesVar5 =
                 1;
-            dataConnectionConnectionDesVar6 :>> gncDesignSpace::formalDesignProblem::dataConnectionConnectionDesVar6 =
+            dataConnectionConnectionDesVar6 :>> GNCDesignSpace::formalDesignProblem::dataConnectionConnectionDesVar6 =
                 1;
-            dataConnectionConnectionDesVar7 :>> gncDesignSpace::formalDesignProblem::dataConnectionConnectionDesVar7 =
+            dataConnectionConnectionDesVar7 :>> GNCDesignSpace::formalDesignProblem::dataConnectionConnectionDesVar7 =
                 0;
-            dataConnectionConnectionDesVar8 :>> gncDesignSpace::formalDesignProblem::dataConnectionConnectionDesVar8 =
+            dataConnectionConnectionDesVar8 :>> GNCDesignSpace::formalDesignProblem::dataConnectionConnectionDesVar8 =
                 0;
-            dataConnectionConnectionDesVar9 :>> gncDesignSpace::formalDesignProblem::dataConnectionConnectionDesVar9 =
+            dataConnectionConnectionDesVar9 :>> GNCDesignSpace::formalDesignProblem::dataConnectionConnectionDesVar9 =
                 1;
         }
     }

@@ -43,7 +43,7 @@ package GuidanceNavigationControlSAO {
     
     part def Object {
         doc /* Base part def for anything with a mass and a failure rate. */
-        #evalOut attribute mass : ISQ::MassValue;
+        #evalOut attribute mass :> ISQ::mass;
         attribute failureRate : Real;
     }
 
@@ -78,7 +78,7 @@ package GuidanceNavigationControlSAO {
     part def ActuatorB :> Actuator { :>> mass default 5.5[kg]; :>> failureRate default .00020; }
     part def ActuatorC :> Actuator { :>> mass default 9.5[kg]; :>> failureRate default .00010; }
 
-    #architectureDesignSpace part gncDesignSpace : Object {
+    abstract #architectureDesignSpace part def GNCDesignSpace :> Object {
 
         // Set metric roles
         #minObj attribute :>> mass default QuantityCalculations::sum((sensors.mass, computers.mass, actuators.mass));

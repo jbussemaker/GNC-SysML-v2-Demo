@@ -1,15 +1,13 @@
 package 'Unevaluated Example Architecture Instance Package' {
-    doc /* Unevaluated annotated example architecture:
-    run `evaluator.py` to evaluate this architecture.
-    Observe that the output metrics get values assigned,
-    which are the same as in the `annotated_example_architecture.sysml` file. */
+    doc /* Unevaluated annotated example architecture: run `evaluator.py` to evaluate this architecture.
+    Observe that the output metrics get values assigned, which are the same as in the `annotated_example_architecture.sysml` file. */
 
     // Import the the library and the design space model
     private import ArchitectureDesign::*;
     private import 'Guidance, Navigation & Control'::*;
     
     // The architecture instance subsets the design space
-    #architecture part <archId481> 'Architecture Example' :> gncDesignSpace {
+    #architecture part def <archId481> 'Architecture Example' :> GNCDesignSpace {
 
         // Local redefinition of the top-level functions
         action :>> provideSensorData;
@@ -17,7 +15,7 @@ package 'Unevaluated Example Architecture Instance Package' {
         action :>> controlOrientation;
         
         // Redefinition of the top-level attributes, with values assigned after evaluation
-        attribute :>> mass;
+        attribute redefines mass;
         attribute :>> failureRate;
         attribute :>> logFailureRate;
 
@@ -46,7 +44,7 @@ package 'Unevaluated Example Architecture Instance Package' {
         }
 
         // Redefinition of the computers, with 2 instances
-        part :>> computers [2] = (computers_1, computers_2);
+        part :>> computers [2] ordered = (computers_1, computers_2);
 
         #subsystem part computers_1 :> computers {
 
@@ -71,7 +69,7 @@ package 'Unevaluated Example Architecture Instance Package' {
 
         #subsystem part computers_2 :> computers {
 
-            part computerC :>> gncDesignSpace::computers::computerC {
+            part computerC :>> computers::computerC {
                 perform sendActuatorSignal [1] :>> sendActuatorSignalPerformance;
                 #needsAction ::> provideSensorData;
 
@@ -90,7 +88,7 @@ package 'Unevaluated Example Architecture Instance Package' {
         }
 
         // Redefinition of the actuators, with 2 instances
-        part actuators :>> gncDesignSpace::actuators [2] = (actuators_1, actuators_2);
+        part :>> actuators [2] ordered = (actuators_1, actuators_2);
 
         #subsystem part actuators_1 :> actuators {
             
@@ -130,7 +128,7 @@ package 'Unevaluated Example Architecture Instance Package' {
         }
 
         // Redefinition and subsetting of established data connections (sensors to computers)
-        connection :>> dataConnection [2] = (dataConnection_1, dataConnection_2);
+        connection :>> dataConnection [2] ordered = (dataConnection_1, dataConnection_2);
         
         connection dataConnection_1 :> dataConnection
             connect sensors.sensorA.dataOutPort to computers_1.computerB.dataInPort;
@@ -138,7 +136,7 @@ package 'Unevaluated Example Architecture Instance Package' {
             connect sensors.sensorA.dataOutPort to computers_2.computerC.dataInPort;
         
         // Redefinition and subsetting of established actuation signal connections (computers to actuators)
-        connection :>> actuatorSignalConnection [2] = (
+        connection :>> actuatorSignalConnection [2] ordered = (
             actuatorSignalConnection_1, actuatorSignalConnection_2);
         
         connection actuatorSignalConnection_1 :> actuatorSignalConnection
@@ -167,7 +165,7 @@ package 'Unevaluated Example Architecture Instance Package' {
         }
 
         // Redefinition of the design problem, showing the equivalent but with design variable values
-        formalDesignProblem :>> gncDesignSpace::formalDesignProblem {
+        :>> formalDesignProblem {
             :>> actuatorsInstantiationDesVar = 2;
             :>> controlOrientationFulfillmentChoiceSys1DesVar = 2;
             :>> controlOrientationFulfillmentChoiceSys2DesVar = 2;

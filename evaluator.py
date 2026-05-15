@@ -10,6 +10,7 @@ import syside
 import syside.gc
 import pathlib
 import logging
+import argparse
 import itertools
 import numpy as np
 import logging.config
@@ -46,7 +47,7 @@ def evaluate_architecture(architecture_model_path, output_model_path=None):
             fp.write(syside.pprint(root).encode('utf-8'))
 
 
-def _calculate_mass(model: syside.Model, part: syside.PartUsage, kg_units: syside.AttributeUsage) -> float:
+def _calculate_mass(model: syside.Model, part: syside.PartDefinition, kg_units: syside.AttributeUsage) -> float:
     """
     Evaluate the mass of the architecture.
     This is done by simply summing the masses of all the elements: sensors, computers, actuators.
@@ -132,7 +133,7 @@ def _calculate_mass(model: syside.Model, part: syside.PartUsage, kg_units: sysid
     return mass
 
 
-def _calculate_failure_rate(arch_part: syside.PartUsage):
+def _calculate_failure_rate(arch_part: syside.PartDefinition):
     """
     Evaluate the failure rate of the architecture. This is done by getting the failure rates of the objects and the
     connection between the objects, and then calculating the probability that no single connected path (from a sensor to
@@ -161,6 +162,10 @@ def _calculate_failure_rate(arch_part: syside.PartUsage):
     log_failure_rate = float(np.log10(failure_rate))
     log.info(f'System-level failure rate = {failure_rate} (log = {log_failure_rate})')
 
+    from sb_arch_opt.problems.gnc import GNCProblemBase
+    fr_ = GNCProblemBase.calc_failure_rate(failure_rates, obj_conns)
+    assert log_failure_rate == fr_
+
     # Write the failure rate
     for fr_attr in arch_part.owned_features:
         if isinstance(fr_attr, syside.AttributeUsage) and fr_attr.name == 'failureRate':
@@ -179,7 +184,7 @@ def _calculate_failure_rate(arch_part: syside.PartUsage):
             value.value = -log_failure_rate
 
 
-def _get_failure_rates(arch_part: syside.PartUsage, name: str) -> List[float]:
+def _get_failure_rates(arch_part: syside.PartDefinition, name: str) -> List[float]:
     failure_rates = []
 
     # Find the subsystem instances that we are interested in
@@ -226,7 +231,7 @@ def _get_failure_rates(arch_part: syside.PartUsage, name: str) -> List[float]:
     return failure_rates
 
 
-def _get_connections(arch_part: syside.PartUsage, name: str):
+def _get_connections(arch_part: syside.PartDefinition, name: str):
 
     def get_conn_idx(connector: syside.Feature):
         # Get the feature chain of the connector: e.g. sensors_1.sensorA.dataOutPort.data
@@ -275,10 +280,13 @@ def _get_kg_units_attr(model: syside.Model) -> syside.AttributeUsage:
 def _load_model(architecture_model_path) -> syside.Model:
 
     # Set up the environment to also include the library files
-    lib_files = syside._loading.get_stdlib_files()
+    lib_files = []
     for library_file in lib_dir.glob('*.sysml'):
         lib_files.append(library_file)
-    env = syside.Environment.from_stdlib_files(lib_files)
+
+    default_env = syside.Environment.get_default()
+    model, _ = syside.load_model(lib_files, environment=default_env)
+    env = syside.Environment.from_documents(default_env.documents + model.documents)
 
     # Get the design space model path
     design_space_model_path = model_dir / 'gnc.sysml'
@@ -291,7 +299,7 @@ def _load_model(architecture_model_path) -> syside.Model:
     return model
 
 
-def _get_architecture_part(root: syside.Namespace) -> syside.PartUsage:
+def _get_architecture_part(root: syside.Namespace) -> syside.PartDefinition:
     # Get the package
     package: syside.Package
     for element in root.children.elements:
@@ -304,7 +312,7 @@ def _get_architecture_part(root: syside.Namespace) -> syside.PartUsage:
     # Get the architecture part
     prefix: syside.MetadataUsage
     for element in package.children.elements:
-        if isinstance(element, syside.PartUsage):
+        if isinstance(element, syside.PartDefinition):
             for prefix in element.prefixes.elements:
                 if prefix.metadata_definition.name == 'architecture':
                     return element
@@ -390,6 +398,16 @@ def capture_log(level='INFO'):
     })
 
 
+def cli():
+    parser = argparse.ArgumentParser('GNC SysML v2 evaluator')
+    parser.add_argument('sysml_input_file', help='Input architecture instance in SysML')
+    parser.add_argument('sysml_output_file', help='Path to write evaluated architecture (SysML)')
+    args = parser.parse_args()
+
+    evaluate_architecture(args.sysml_input_file, args.sysml_output_file)
+
+
 if __name__ == '__main__':
     capture_log()
     evaluate_architecture('results/annotated_example_architecture_unevaluated.sysml')
+    # cli()

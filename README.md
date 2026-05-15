@@ -54,8 +54,8 @@ For running the reference optimization, implemented in [SBArchOpt](https://sbarc
 
 ### SysML v2 implementation
 
-![SysML v2 results](results/optimization_50_10/gnc_optimized_plot.png)
+![SysML v2 results](results/optimization_50_20/gnc_optimized_plot.png)
 
 ### Reference implementation
 
-![SysML v2 results](results/ref_optimization_50_10/gnc_optimized_plot.png)
+![SysML v2 results](results/ref_optimization_50_20/gnc_optimized_plot.png)

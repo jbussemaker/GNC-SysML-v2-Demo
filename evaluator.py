@@ -18,8 +18,9 @@ from typing import List
 
 log = logging.getLogger('gnc')
 
-model_dir = pathlib.Path(__file__).parent.absolute() / 'model'
-lib_dir = model_dir / 'library'
+project_dir = pathlib.Path(__file__).parent.absolute()
+model_dir = project_dir / 'model'
+lib_dir = project_dir / '.sysand' / 'lib'
 
 
 
@@ -281,7 +282,7 @@ def _load_model(architecture_model_path) -> syside.Model:
 
     # Set up the environment to also include the library files
     lib_files = []
-    for library_file in lib_dir.glob('*.sysml'):
+    for library_file in lib_dir.glob('*/*.sysml'):
         lib_files.append(library_file)
 
     default_env = syside.Environment.get_default()

@@ -1,0 +1,11 @@
+{
+  "name": "GNC SysML v2 Demo",
+  "publisher": "Jasper Bussemaker",
+  "version": "1.0.0",
+  "usage": [
+    {
+      "resource": "pkg:sysand/ode4hera/architecture-design",
+      "versionConstraint": "^2.0.0"
+    }
+  ]
+}

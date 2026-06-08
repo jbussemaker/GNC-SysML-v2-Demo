@@ -14,7 +14,7 @@
 //
 // MIT License
 //
-// Copyright (c) 2026 Deutsches Zentrum für Luft- und Raumfahrt eV (DLR), Siemens Industry Software NV, Siemens AG, Siemens Industry Software SAS, IRT Saint Exupéry, EnginSoft SpA, Airbus Defence and Space SA, Airbus Defence and Space GmbH, Leonardo SpA
+// Copyright: (c) 2026, The Contributors to the ODE4HERA SysML v2 Libraries.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -45,9 +45,7 @@ library package ArchitectureDesign {
      *   - Design variables, objectives, design constraints
      * - Modeling architecture instances
      *
-     * Version v1.0.0
-     *
-     * Copyright 2025 Deutsches Zentrum für Luft- und Raumfahrt eV (DLR), Siemens Industry Software NV, Siemens AG, Siemens Industry Software SAS, IRT Saint Exupéry, EnginSoft SpA, Airbus Defence and Space SA, Airbus Defence and Space GmbH, Leonardo SpA
+     * Copyright: (c) 2026, The Contributors to the ODE4HERA SysML v2 Libraries.
 	 */
 
     public import DesignProblemDefs::*;
@@ -57,7 +55,7 @@ library package ArchitectureDesign {
     package ArchDesignSpaceDefs {
         doc /* Package containing elements for defining and modeling
         the architecture design space and design problem. */
-
+        
         ///////////////////////////////////////
         ////// Architecture design space //////
         ///////////////////////////////////////
@@ -97,14 +95,14 @@ library package ArchitectureDesign {
         }
 
         part def ArchitectureDesignSpace :> ArchitectureDesignSpacePart {
-            doc /* An architecture design space, specifying architecture-level and
-            architecture-specific design choices, yielding a set of possible architecture instances
+            doc /* An architecture design space, specifying architecture-level and 
+            architecture-specific design choices, yielding a set of possible architecture instances 
             by modeling architectural choices. */
 
             item architecturalChoices[0..1] {
                 doc /* The design problem in terms of architectural choices,
                 not yet encoded as actual design variables. */
-
+        
                 choices[1..*] : Base::Anything {
                     doc /* Architectural choices determine what choices can
                     be taken when defining an architecture instance from the design space,
@@ -115,7 +113,7 @@ library package ArchitectureDesign {
 
                 occurrence choiceConstraints[0..*] : ChoiceConstraint;
             }
-
+            
             item formalDesignProblem[0..1] : FormalDesignProblem {
                 doc /* The design problem as formalized from this architecture
                 design space, encoded as actual design variables.
@@ -163,9 +161,9 @@ library package ArchitectureDesign {
         action neededActions[*] : NeededAction;
 
         metadata def needsAction :> Metaobjects::SemanticMetadata {
-            doc /* #needsAction declares that some part needs the inclusion of another action in
+            doc /* #needsAction declares that some part needs the inclusion of another action in 
             order to perform its actions.
-            For example, in order to generateThrust, a turbofan needs the action provideFuel to be
+            For example, in order to generateThrust, a turbofan needs the action provideFuel to be 
             performed by another part (e.g. fuelSystem).
 
             Should be used as a referential feature:
@@ -241,7 +239,7 @@ library package ArchitectureDesign {
                 highLevelFunction,
                 lowLevelFunction1, lowLevelFunction2
             );
-
+            
             Note that the first function in the list of connected elements is the higher-level function!
             */
             :>> baseType = Decomposition meta SysML::ConnectionDefinition;
@@ -354,8 +352,8 @@ library package ArchitectureDesign {
         // Architecture instance definition
         part def Architecture :> ArchitectureDesignSpace {
             doc /* An architecture instance, derived from an ArchitectureDesignSpace.
-            An architecture instance represents a specific system architecture, obtained by
-            allocating architectural choices and by assigning values to architecture-specific design
+            An architecture instance represents a specific system architecture, obtained by 
+            allocating architectural choices and by assigning values to architecture-specific design 
             variables. */
         }
 
@@ -391,7 +389,7 @@ library package ArchitectureDesign {
         item def FormalDesignProblem {
             doc /* A design problem in the form that a numerical optimization algorithm would see it:
             design variables, objectives and constraints. */
-
+            
             attribute designVariables[1..*] :> DesignVariable {
                 doc /* Design variables are the variables that can be changed by the optimization algorithm
                 in order to change/improve the design. */
@@ -454,7 +452,7 @@ library package ArchitectureDesign {
             :>> lowerBound;
             :>> upperBound;
             attribute step : ScalarValues::Real;
-
+            
             :>> isOrdered = true;
 
             // Check that the step is smaller than the range
@@ -468,10 +466,10 @@ library package ArchitectureDesign {
         attribute IntegerDesignVariable :> ContinuousStepDesignVariable : ScalarValues::Integer {
             doc /* An integer discrete design variable:
             an attribute that can take any value between two integer bounds (inclusive). */
-
+            
             :>> lowerBound : ScalarValues::Integer;
             :>> upperBound : ScalarValues::Integer;
-
+            
             :>> step = 1;
             :>> values ordered : ScalarValues::Integer;
         }
@@ -544,7 +542,7 @@ library package ArchitectureDesign {
 
         attribute ObjectiveOutput :> EvaluationOutput {
             doc /* An output attribute with the role of minimization (default) or maximization objective. */
-
+            
             attribute minimize : ScalarValues::Boolean default true;
 
             :>> role = if minimize ? OutputRole::MinimizationObjective else OutputRole::MaximizationObjective;
@@ -558,7 +556,7 @@ library package ArchitectureDesign {
         attribute ConstraintOutput :> EvaluationOutput {
             doc /* An output attribute with the role of constraint.
             Should also have an actual constraint defined, for example:
-
+            
             attribute myConstraint :> ConstraintOutput {
                 asssert constraint { that >= 1000 }
             }

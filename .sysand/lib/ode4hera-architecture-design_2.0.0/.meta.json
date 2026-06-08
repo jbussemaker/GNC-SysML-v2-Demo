@@ -1,0 +1,33 @@
+{
+  "index": {
+    "ArchitectureDesign_ConnectionChoiceExample": "examples/03_ConnectionChoice.sysml",
+    "ArchitectureDesign_FunctionAllocationExample": "examples/01_FunctionAllocation.sysml",
+    "ArchitectureDesign": "ArchitectureDesign.sysml",
+    "ArchitectureDesign_DesignParametersExample": "examples/02_DesignParameters.sysml",
+    "ArchitectureDesign_AdvancedFunctionAllocationExample": "examples/04_AdvancedFunctionAllocation.sysml"
+  },
+  "created": "2025-10-23T05:10:21.958101700Z",
+  "metamodel": "https://www.omg.org/spec/SysML/20250201",
+  "checksum": {
+    "ArchitectureDesign.sysml": {
+      "value": "4ef05ae9d3846c259307e745e4927cf94ace32f3b59e38268c8da0a33e0d91af",
+      "algorithm": "SHA256"
+    },
+    "examples/01_FunctionAllocation.sysml": {
+      "value": "2712cc98ac093cff51f49f2325073ca47fc9292019d86b14f7f7c45037ada1bc",
+      "algorithm": "SHA256"
+    },
+    "examples/02_DesignParameters.sysml": {
+      "value": "095a1c6d889a51fb007348530f0ac715423f59483e41e3d60395380a045f735f",
+      "algorithm": "SHA256"
+    },
+    "examples/03_ConnectionChoice.sysml": {
+      "value": "d421b9ecddefa787e02f49138f248243b9cc20d77ba39750b4653c66fa55a5dd",
+      "algorithm": "SHA256"
+    },
+    "examples/04_AdvancedFunctionAllocation.sysml": {
+      "value": "68db33d7bccb5c713dad9cb7457a8dbde7af9f7ad2e4bd0b3acbcf7bb52792a5",
+      "algorithm": "SHA256"
+    }
+  }
+}

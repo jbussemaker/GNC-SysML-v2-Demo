@@ -1,0 +1,32 @@
+{
+  "name": "Architecture Design",
+  "publisher": "ode4hera",
+  "description": "Library for modeling architecture design space exploration and optimization concepts.",
+  "version": "2.0.0",
+  "license": "MIT",
+  "maintainer": [
+    "DLR e.V., Jasper Bussemaker <jasper.bussemaker@dlr.de>"
+  ],
+  "website": "https://www.ode4hera.eu/",
+  "topic": [
+    "MBSE",
+    "Architecture",
+    "Optimization",
+    "System Architecture Optimization",
+    "SAO"
+  ],
+  "usage": [
+    {
+      "resource": "https://www.omg.org/spec/KerML/20250201/Semantic-Library.kpar"
+    },
+    {
+      "resource": "https://www.omg.org/spec/KerML/20250201/Data-Type-Library.kpar"
+    },
+    {
+      "resource": "https://www.omg.org/spec/KerML/20250201/Function-Library.kpar"
+    },
+    {
+      "resource": "https://www.omg.org/spec/SysML/20250201/Systems-Library.kpar"
+    }
+  ]
+}

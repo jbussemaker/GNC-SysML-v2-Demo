@@ -1,0 +1,63 @@
+{
+  "commandScriptLinux" : "",
+  "commandScriptWindows" : "conda activate adore-sysmlv2\r\npython \"${dir:tool}\\evaluator.py\" \"${in:arch_file}\" arch_evaluated.sysml --project-folder \"${in:project_folder}\"",
+  "copyToolBehavior" : "never",
+  "deleteWorkingDirectoriesAfterWorkflowExecution" : true,
+  "deleteWorkingDirectoriesKeepOnErrorOnce" : false,
+  "documentationFilePath" : "",
+  "enableCommandScriptLinux" : false,
+  "enableCommandScriptWindows" : true,
+  "groupName" : "",
+  "imitationScript" : "",
+  "imitationToolOutputFilename" : "",
+  "inputs" : [ {
+    "inputHandling" : "Queue",
+    "endpointFileName" : "",
+    "endpointDataType" : "FileReference",
+    "defaultInputExecutionConstraint" : "Required",
+    "endpointName" : "arch_file",
+    "defaultInputHandling" : "Queue",
+    "inputExecutionConstraint" : "Required",
+    "endpointFolder" : "Input folder"
+  }, {
+    "inputHandling" : "Constant",
+    "endpointFileName" : "",
+    "endpointDataType" : "DirectoryReference",
+    "defaultInputExecutionConstraint" : "Required",
+    "endpointName" : "project_folder",
+    "defaultInputHandling" : "Constant",
+    "inputExecutionConstraint" : "Required",
+    "endpointFolder" : "Input folder"
+  } ],
+  "integrationType" : "Common",
+  "isActive" : true,
+  "launchSettings" : [ {
+    "limitInstallationInstancesNumber" : "1",
+    "limitInstallationInstances" : "true",
+    "rootWorkingDirectory" : "",
+    "host" : "RCE",
+    "toolDirectory" : "C:\\path\\to\\gnc-test",
+    "version" : "1.0"
+  } ],
+  "outputs" : [ {
+    "inputHandling" : "-",
+    "endpointFileName" : "",
+    "endpointDataType" : "FileReference",
+    "endpointName" : "eval_arch_file",
+    "inputExecutionConstraint" : "-",
+    "endpointFolder" : ""
+  } ],
+  "postScript" : "${out:eval_arch_file} = 'arch_evaluated.sysml'",
+  "preScript" : "",
+  "setToolDirAsWorkingDir" : false,
+  "toolDescription" : "GNC evaluator for the SysML v2 implementation of the problem",
+  "toolIconPath" : "",
+  "toolIntegrationVersion" : 1,
+  "toolIntegratorE-Mail" : "jasper.bussemaker@dlr.de",
+  "toolIntegratorName" : "Jasper Bussemaker",
+  "toolName" : "GNC SysML v2",
+  "toolProperties" : {
+    "Default" : { }
+  },
+  "uploadIcon" : true
+}

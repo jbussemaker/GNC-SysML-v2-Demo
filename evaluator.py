@@ -18,10 +18,19 @@ from typing import List
 
 log = logging.getLogger('gnc')
 
-project_dir = pathlib.Path(__file__).parent.absolute()
-model_dir = project_dir / 'model'
-lib_dir = project_dir / '.sysand' / 'lib'
+project_dir = lib_dir = model_dir = None
 
+
+def _set_project_dir(project_folder: pathlib.Path):
+    global project_dir, model_dir, lib_dir
+    assert project_folder.exists() and project_folder.is_dir()
+
+    project_dir = project_folder
+    model_dir = project_dir / 'model'
+    lib_dir = project_dir / '.sysand' / 'lib'
+
+
+_set_project_dir(pathlib.Path(__file__).parent.absolute())
 
 
 def evaluate_architecture(architecture_model_path, output_model_path=None):
@@ -403,12 +412,18 @@ def cli():
     parser = argparse.ArgumentParser('GNC SysML v2 evaluator')
     parser.add_argument('sysml_input_file', help='Input architecture instance in SysML')
     parser.add_argument('sysml_output_file', help='Path to write evaluated architecture (SysML)')
+    parser.add_argument('--project-folder', help='Optional path to project folder to load the models from')
     args = parser.parse_args()
+
+    project_folder = args.project_folder
+    if project_folder:
+        project_folder = pathlib.Path(project_folder)
+        _set_project_dir(project_folder)
 
     evaluate_architecture(args.sysml_input_file, args.sysml_output_file)
 
 
 if __name__ == '__main__':
     capture_log()
-    evaluate_architecture('results/annotated_example_architecture_unevaluated.sysml')
-    # cli()
+    # evaluate_architecture('results/annotated_example_architecture_unevaluated.sysml')
+    cli()

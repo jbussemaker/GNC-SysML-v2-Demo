@@ -1,3 +1,6 @@
 exclude = [
-    "model/base/gnc_base.sysml"
+    "model/base/gnc_base.sysml",
+    "model/gnc_annotated.sysml",
+    "results/*.sysml",
+    "results/**/*.sysml",
 ]

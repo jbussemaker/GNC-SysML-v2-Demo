@@ -215,7 +215,7 @@ package 'Guidance, Navigation & Control' {
             /* Computer to actuator connections. */
         }
 
-        action controlOrientation :> boundaryFunctions;
+        action controlOrientation :> ArchDesignSpaceDefs::ArchitectureDesignSpacePart::boundaryFunctions;
 
         #subsystem part actuators : Object [1..3] {
             #evalOut attribute mass :>> mass default QuantityCalculations::sum(
@@ -371,9 +371,8 @@ package 'Guidance, Navigation & Control' {
                 :>> constraintType = ArchDesignSpaceDefs::ChoiceConstraintType::UnorderedCombinations;
             }
         }
-
-        :>> formalDesignProblem {
-            :>> designVariables [30] ordered = (
+        formalDesignProblem :>> ArchDesignSpaceDefs::ArchitectureDesignSpace::formalDesignProblem {
+            designVariables :>> DesignProblemDefs::FormalDesignProblem::designVariables [30] ordered = (
                 actuatorsInstantiationDesVar, controlOrientationFulfillmentChoiceSys1DesVar,
                 controlOrientationFulfillmentChoiceSys2DesVar, controlOrientationFulfillmentChoiceSys3DesVar,
                 computersInstantiationDesVar, sendActuatorSignalFulfillmentChoiceSys1DesVar,
@@ -389,141 +388,130 @@ package 'Guidance, Navigation & Control' {
                 dataConnectionConnectionDesVar5, dataConnectionConnectionDesVar6, dataConnectionConnectionDesVar7,
                 dataConnectionConnectionDesVar8, dataConnectionConnectionDesVar9
             );
-
-            derived #integerDesignVariable attribute actuatorsInstantiationDesVar :> designVariables {
+            derived #DesignProblemDefs::integerDesignVariable attribute actuatorsInstantiationDesVar
+                :> designVariables {
                 lowerBound :>> DesignProblemDefs::IntegerDesignVariable::lowerBound = 1;
                 upperBound :>> DesignProblemDefs::IntegerDesignVariable::upperBound = 3;
             }
             allocate architecturalChoices.actuatorsInstantiationChoice to actuatorsInstantiationDesVar;
-            derived #categoricalDesignVariable attribute controlOrientationFulfillmentChoiceSys1DesVar
+            derived #DesignProblemDefs::categoricalDesignVariable
+            attribute controlOrientationFulfillmentChoiceSys1DesVar
                 :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1, 2); }
             allocate architecturalChoices.controlOrientationFulfillmentChoiceSys1
                 to controlOrientationFulfillmentChoiceSys1DesVar;
-            derived #categoricalDesignVariable attribute controlOrientationFulfillmentChoiceSys2DesVar
+            derived #DesignProblemDefs::categoricalDesignVariable
+            attribute controlOrientationFulfillmentChoiceSys2DesVar
                 :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1, 2); }
             allocate architecturalChoices.controlOrientationFulfillmentChoiceSys2
                 to controlOrientationFulfillmentChoiceSys2DesVar;
-            derived #categoricalDesignVariable attribute controlOrientationFulfillmentChoiceSys3DesVar
+            derived #DesignProblemDefs::categoricalDesignVariable
+            attribute controlOrientationFulfillmentChoiceSys3DesVar
                 :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1, 2); }
             allocate architecturalChoices.controlOrientationFulfillmentChoiceSys3
                 to controlOrientationFulfillmentChoiceSys3DesVar;
-            derived #integerDesignVariable attribute computersInstantiationDesVar :> designVariables {
+            derived #DesignProblemDefs::integerDesignVariable attribute computersInstantiationDesVar
+                :> designVariables {
                 lowerBound :>> DesignProblemDefs::IntegerDesignVariable::lowerBound = 1;
                 upperBound :>> DesignProblemDefs::IntegerDesignVariable::upperBound = 3;
             }
             allocate architecturalChoices.computersInstantiationChoice to computersInstantiationDesVar;
-            derived #categoricalDesignVariable attribute sendActuatorSignalFulfillmentChoiceSys1DesVar
+            derived #DesignProblemDefs::categoricalDesignVariable
+            attribute sendActuatorSignalFulfillmentChoiceSys1DesVar
                 :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1, 2); }
             allocate architecturalChoices.sendActuatorSignalFulfillmentChoiceSys1
                 to sendActuatorSignalFulfillmentChoiceSys1DesVar;
-            derived #categoricalDesignVariable attribute sendActuatorSignalFulfillmentChoiceSys2DesVar
+            derived #DesignProblemDefs::categoricalDesignVariable
+            attribute sendActuatorSignalFulfillmentChoiceSys2DesVar
                 :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1, 2); }
             allocate architecturalChoices.sendActuatorSignalFulfillmentChoiceSys2
                 to sendActuatorSignalFulfillmentChoiceSys2DesVar;
-            derived #categoricalDesignVariable attribute sendActuatorSignalFulfillmentChoiceSys3DesVar
+            derived #DesignProblemDefs::categoricalDesignVariable
+            attribute sendActuatorSignalFulfillmentChoiceSys3DesVar
                 :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1, 2); }
             allocate architecturalChoices.sendActuatorSignalFulfillmentChoiceSys3
                 to sendActuatorSignalFulfillmentChoiceSys3DesVar;
-            derived #integerDesignVariable attribute sensorsInstantiationDesVar :> designVariables {
+            derived #DesignProblemDefs::integerDesignVariable attribute sensorsInstantiationDesVar :> designVariables {
                 lowerBound :>> DesignProblemDefs::IntegerDesignVariable::lowerBound = 1;
                 upperBound :>> DesignProblemDefs::IntegerDesignVariable::upperBound = 3;
             }
             allocate architecturalChoices.sensorsInstantiationChoice to sensorsInstantiationDesVar;
-            derived #categoricalDesignVariable attribute provideSensorDataFulfillmentChoiceSys1DesVar
+            derived #DesignProblemDefs::categoricalDesignVariable attribute provideSensorDataFulfillmentChoiceSys1DesVar
                 :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1, 2); }
             allocate architecturalChoices.provideSensorDataFulfillmentChoiceSys1
                 to provideSensorDataFulfillmentChoiceSys1DesVar;
-            derived #categoricalDesignVariable attribute provideSensorDataFulfillmentChoiceSys2DesVar
+            derived #DesignProblemDefs::categoricalDesignVariable attribute provideSensorDataFulfillmentChoiceSys2DesVar
                 :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1, 2); }
             allocate architecturalChoices.provideSensorDataFulfillmentChoiceSys2
                 to provideSensorDataFulfillmentChoiceSys2DesVar;
-            derived #categoricalDesignVariable attribute provideSensorDataFulfillmentChoiceSys3DesVar
+            derived #DesignProblemDefs::categoricalDesignVariable attribute provideSensorDataFulfillmentChoiceSys3DesVar
                 :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1, 2); }
             allocate architecturalChoices.provideSensorDataFulfillmentChoiceSys3
                 to provideSensorDataFulfillmentChoiceSys3DesVar;
-            derived #categoricalDesignVariable attribute actuatorSignalConnectionConnectionDesVar :> designVariables {
-                values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1);
-            }
+            derived #DesignProblemDefs::categoricalDesignVariable attribute actuatorSignalConnectionConnectionDesVar
+                :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1); }
             allocate architecturalChoices.actuatorSignalConnectionConnectionChoice
                 to actuatorSignalConnectionConnectionDesVar;
-            derived #categoricalDesignVariable attribute actuatorSignalConnectionConnectionDesVar2 :> designVariables {
-                values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1);
-            }
+            derived #DesignProblemDefs::categoricalDesignVariable attribute actuatorSignalConnectionConnectionDesVar2
+                :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1); }
             allocate architecturalChoices.actuatorSignalConnectionConnectionChoice
                 to actuatorSignalConnectionConnectionDesVar2;
-            derived #categoricalDesignVariable attribute actuatorSignalConnectionConnectionDesVar3 :> designVariables {
-                values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1);
-            }
+            derived #DesignProblemDefs::categoricalDesignVariable attribute actuatorSignalConnectionConnectionDesVar3
+                :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1); }
             allocate architecturalChoices.actuatorSignalConnectionConnectionChoice
                 to actuatorSignalConnectionConnectionDesVar3;
-            derived #categoricalDesignVariable attribute actuatorSignalConnectionConnectionDesVar4 :> designVariables {
-                values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1);
-            }
+            derived #DesignProblemDefs::categoricalDesignVariable attribute actuatorSignalConnectionConnectionDesVar4
+                :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1); }
             allocate architecturalChoices.actuatorSignalConnectionConnectionChoice
                 to actuatorSignalConnectionConnectionDesVar4;
-            derived #categoricalDesignVariable attribute actuatorSignalConnectionConnectionDesVar5 :> designVariables {
-                values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1);
-            }
+            derived #DesignProblemDefs::categoricalDesignVariable attribute actuatorSignalConnectionConnectionDesVar5
+                :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1); }
             allocate architecturalChoices.actuatorSignalConnectionConnectionChoice
                 to actuatorSignalConnectionConnectionDesVar5;
-            derived #categoricalDesignVariable attribute actuatorSignalConnectionConnectionDesVar6 :> designVariables {
-                values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1);
-            }
+            derived #DesignProblemDefs::categoricalDesignVariable attribute actuatorSignalConnectionConnectionDesVar6
+                :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1); }
             allocate architecturalChoices.actuatorSignalConnectionConnectionChoice
                 to actuatorSignalConnectionConnectionDesVar6;
-            derived #categoricalDesignVariable attribute actuatorSignalConnectionConnectionDesVar7 :> designVariables {
-                values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1);
-            }
+            derived #DesignProblemDefs::categoricalDesignVariable attribute actuatorSignalConnectionConnectionDesVar7
+                :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1); }
             allocate architecturalChoices.actuatorSignalConnectionConnectionChoice
                 to actuatorSignalConnectionConnectionDesVar7;
-            derived #categoricalDesignVariable attribute actuatorSignalConnectionConnectionDesVar8 :> designVariables {
-                values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1);
-            }
+            derived #DesignProblemDefs::categoricalDesignVariable attribute actuatorSignalConnectionConnectionDesVar8
+                :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1); }
             allocate architecturalChoices.actuatorSignalConnectionConnectionChoice
                 to actuatorSignalConnectionConnectionDesVar8;
-            derived #categoricalDesignVariable attribute actuatorSignalConnectionConnectionDesVar9 :> designVariables {
-                values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1);
-            }
+            derived #DesignProblemDefs::categoricalDesignVariable attribute actuatorSignalConnectionConnectionDesVar9
+                :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1); }
             allocate architecturalChoices.actuatorSignalConnectionConnectionChoice
                 to actuatorSignalConnectionConnectionDesVar9;
-            derived #categoricalDesignVariable attribute dataConnectionConnectionDesVar :> designVariables {
-                values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1);
-            }
+            derived #DesignProblemDefs::categoricalDesignVariable attribute dataConnectionConnectionDesVar
+                :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1); }
             allocate architecturalChoices.dataConnectionConnectionChoice to dataConnectionConnectionDesVar;
-            derived #categoricalDesignVariable attribute dataConnectionConnectionDesVar2 :> designVariables {
-                values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1);
-            }
+            derived #DesignProblemDefs::categoricalDesignVariable attribute dataConnectionConnectionDesVar2
+                :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1); }
             allocate architecturalChoices.dataConnectionConnectionChoice to dataConnectionConnectionDesVar2;
-            derived #categoricalDesignVariable attribute dataConnectionConnectionDesVar3 :> designVariables {
-                values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1);
-            }
+            derived #DesignProblemDefs::categoricalDesignVariable attribute dataConnectionConnectionDesVar3
+                :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1); }
             allocate architecturalChoices.dataConnectionConnectionChoice to dataConnectionConnectionDesVar3;
-            derived #categoricalDesignVariable attribute dataConnectionConnectionDesVar4 :> designVariables {
-                values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1);
-            }
+            derived #DesignProblemDefs::categoricalDesignVariable attribute dataConnectionConnectionDesVar4
+                :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1); }
             allocate architecturalChoices.dataConnectionConnectionChoice to dataConnectionConnectionDesVar4;
-            derived #categoricalDesignVariable attribute dataConnectionConnectionDesVar5 :> designVariables {
-                values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1);
-            }
+            derived #DesignProblemDefs::categoricalDesignVariable attribute dataConnectionConnectionDesVar5
+                :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1); }
             allocate architecturalChoices.dataConnectionConnectionChoice to dataConnectionConnectionDesVar5;
-            derived #categoricalDesignVariable attribute dataConnectionConnectionDesVar6 :> designVariables {
-                values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1);
-            }
+            derived #DesignProblemDefs::categoricalDesignVariable attribute dataConnectionConnectionDesVar6
+                :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1); }
             allocate architecturalChoices.dataConnectionConnectionChoice to dataConnectionConnectionDesVar6;
-            derived #categoricalDesignVariable attribute dataConnectionConnectionDesVar7 :> designVariables {
-                values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1);
-            }
+            derived #DesignProblemDefs::categoricalDesignVariable attribute dataConnectionConnectionDesVar7
+                :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1); }
             allocate architecturalChoices.dataConnectionConnectionChoice to dataConnectionConnectionDesVar7;
-            derived #categoricalDesignVariable attribute dataConnectionConnectionDesVar8 :> designVariables {
-                values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1);
-            }
+            derived #DesignProblemDefs::categoricalDesignVariable attribute dataConnectionConnectionDesVar8
+                :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1); }
             allocate architecturalChoices.dataConnectionConnectionChoice to dataConnectionConnectionDesVar8;
-            derived #categoricalDesignVariable attribute dataConnectionConnectionDesVar9 :> designVariables {
-                values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1);
-            }
+            derived #DesignProblemDefs::categoricalDesignVariable attribute dataConnectionConnectionDesVar9
+                :> designVariables { values :>> DesignProblemDefs::DiscreteDesignVariable::values = (0, 1); }
             allocate architecturalChoices.dataConnectionConnectionChoice to dataConnectionConnectionDesVar9;
-            :>> objectives [2] ordered = (logFailureRate, mass);
-            :>> constraints [0] ordered;
+            objectives :>> DesignProblemDefs::FormalDesignProblem::objectives [2] ordered = (logFailureRate, mass);
+            constraints :>> DesignProblemDefs::FormalDesignProblem::constraints [0] ordered;
         }
     }
 } // package 'Guidance, Navigation & Control'

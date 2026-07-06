@@ -57,7 +57,7 @@ def evaluate_architecture(architecture_model_path, output_model_path=None):
             fp.write(syside.pprint(root).encode('utf-8'))
 
 
-def _calculate_mass(model: syside.Model, part: syside.PartDefinition, kg_units: syside.AttributeUsage) -> float:
+def _calculate_mass(model: syside.Model, part: syside.Type, kg_units: syside.AttributeUsage) -> float:
     """
     Evaluate the mass of the architecture.
     This is done by simply summing the masses of all the elements: sensors, computers, actuators.
@@ -74,35 +74,7 @@ def _calculate_mass(model: syside.Model, part: syside.PartDefinition, kg_units: 
     else:
         return 0.
 
-    # # Evaluate the mass attribute
-    # # Based on the example: https://docs.sensmetry.com/examples/unit_evaluation.html#evaluating-with-unit-conversion
-    # compiler = syside.Compiler()
-    # evaluated_value, report = compiler.evaluate_feature(
-    #     feature=mass_attr,
-    #     scope=part,
-    #     stdlib=model.environment.lib,
-    #     experimental_quantities=True,
-    # )
-    #
-    # if report.fatal:
-    #     diagnostics = '\n'.join([str(diag) for diag in report.diagnostics])
-    #     raise ValueError(f'Could not evaluate mass:\n{diagnostics}')
-    #
-    # return evaluated_value
-
-    # Check if the mass attribute has a value
-    if mass_attr.feature_value is not None:
-        value = mass_attr.feature_value.value
-        if (isinstance(value, syside.OperatorExpression) and len(value.children) == 2 and
-                value.operator == syside.Operator.Quantity):
-
-            # Return the literal value of the first argument to the quantity operator
-            mass = float(value.children.elements[0].feature_value.value.value)
-            log.info(f'Mass of {part.qualified_name!s} = {mass} kg')
-            return mass
-
-    # Otherwise, get the masses of the contained parts
-    mass = 0.
+    # Calculate masses of sub-elements
     for sub_part in part.children.elements:
         if isinstance(sub_part, syside.PartUsage):
 
@@ -120,7 +92,28 @@ def _calculate_mass(model: syside.Model, part: syside.PartDefinition, kg_units: 
                     continue
 
             # Calculate the mass of the sub part
-            mass += _calculate_mass(model, sub_part, kg_units)
+            _calculate_mass(model, sub_part, kg_units)
+
+    # Get the calculation associated to the attribute
+    base_mass_attr = mass_attr
+    while base_mass_attr.feature_value is None:
+        relation, base_mass_attr = base_mass_attr.heritage[0]
+        assert relation.__class__ == syside.Redefinition
+    expression = base_mass_attr.feature_value.value
+
+    # Evaluate the mass attribute
+    # Based on the example: https://docs.sensmetry.com/examples/unit_evaluation.html#evaluating-with-unit-conversion
+    compiler = syside.Compiler()
+    mass, report = compiler.evaluate_feature(
+        feature=expression,
+        scope=part,
+        stdlib=model.environment.lib,
+        experimental_quantities=True,
+    )
+
+    if report.fatal:
+        diagnostics = '\n'.join([str(diag) for diag in report.diagnostics])
+        raise ValueError(f'Could not evaluate mass:\n{diagnostics}')
 
     # Write the total mass
     log.info(f'Aggregate mass of {part.qualified_name!s} = {mass} kg')

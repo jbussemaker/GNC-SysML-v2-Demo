@@ -35,9 +35,9 @@ package 'Example Architecture Instance Package' {
             }
 
             // Deselection of the other sensor types
-            part :>> sensorB [0];
-            part :>> sensorC [0];
-            
+            part :>> sensorB [0] = null;
+            part :>> sensorC [0] = null;
+
             // System-level attributes (from the selected part)
             attribute :>> mass = 3 [SI::kg];
             attribute :>> failureRate = 0.00015;
@@ -52,7 +52,7 @@ package 'Example Architecture Instance Package' {
                 // Redefinition of the performance and needsAction links
                 perform sendActuatorSignal [1] :>> sendActuatorSignalPerformance;
                 #needsAction ::> provideSensorData;
-                
+
                 attribute :>> mass = 5 [SI::kg];
                 attribute :>> failureRate = 4e-05;
 
@@ -60,8 +60,8 @@ package 'Example Architecture Instance Package' {
                 port :>> actuationSignalOutPort { out :>> actuationSignal [1]; }
             }
 
-            part :>> computerA [0];
-            part :>> computerC [0];
+            part :>> computerA [0] = null;
+            part :>> computerC [0] = null;
 
             attribute :>> mass = 5 [SI::kg];
             attribute :>> failureRate = 4e-05;
@@ -80,8 +80,8 @@ package 'Example Architecture Instance Package' {
                 port :>> actuationSignalOutPort { out :>> actuationSignal [1]; }
             }
 
-            part :>> computerA [0];
-            part :>> computerB [0];
+            part :>> computerA [0] = null;
+            part :>> computerB [0] = null;
 
             attribute :>> mass = 10 [SI::kg];
             attribute :>> failureRate = 2e-05;
@@ -91,7 +91,7 @@ package 'Example Architecture Instance Package' {
         part :>> actuators [2] ordered = (actuators_1, actuators_2);
 
         #subsystem part actuators_1 :> actuators {
-            
+
             part :>> actuatorC {
                 perform controlOrientation [1] :>> controlOrientationPerformance;
                 #needsAction ::> sendActuatorSignal;
@@ -101,10 +101,10 @@ package 'Example Architecture Instance Package' {
 
                 port :>> actuationSignalInPort { in :>> actuationSignal [1]; }
             }
-            
-            part :>> actuatorA [0];
-            part :>> actuatorB [0];
-            
+
+            part :>> actuatorA [0] = null;
+            part :>> actuatorB [0] = null;
+
             attribute :>> mass = 9.5 [SI::kg];
             attribute :>> failureRate = 0.0001;
         }
@@ -117,11 +117,11 @@ package 'Example Architecture Instance Package' {
 
                 attribute :>> mass = 9.5 [SI::kg];
                 attribute :>> failureRate = 0.0001;
-                
+
                 port :>> actuationSignalInPort { in :>> actuationSignal [1]; }
             }
-            part :>> actuatorA [0];
-            part :>> actuatorB [0];
+            part :>> actuatorA [0] = null;
+            part :>> actuatorB [0] = null;
 
             attribute :>> mass = 9.5 [SI::kg];
             attribute :>> failureRate = 0.0001;
